@@ -1,10 +1,14 @@
-export const login = async () => {
+export const loginUser = async (email: string, password: string) => {
   try {
     const response = await fetch('api/login', {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
     });
     const responseJsonData = await response.json();
     return responseJsonData;

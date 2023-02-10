@@ -1,13 +1,17 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
 interface ProtectedRouteProps {
-  user: object | null;
+  isAuthenticated: boolean;
   redirectPath: string;
   children?: any;
 }
 
-const ProtectedRoute = ({ user, redirectPath = '/login', children }: ProtectedRouteProps) => {
-  if (!user) {
+const ProtectedRoute = ({
+  isAuthenticated,
+  redirectPath = '/login',
+  children
+}: ProtectedRouteProps) => {
+  if (!isAuthenticated) {
     return <Navigate to={redirectPath} replace />;
   }
 

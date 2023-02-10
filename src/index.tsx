@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 if (process.env.NODE_ENV === 'development') {
   // eslint-disable-next-line
-  const { worker } = require('./mocks/browser');
+  const { worker } = require('./common/api/mocks/browser');
   worker.start();
 }
 
