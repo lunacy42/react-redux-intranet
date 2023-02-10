@@ -20,7 +20,6 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm();
   const onSubmit = (data: any) => {
