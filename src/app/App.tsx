@@ -1,14 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { Counter } from '../features/counter/Counter';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './features/layout/Layout';
-import Dashboard from './features/dashboard/Dashboard';
-import Staff from './features/staff/Staff';
-import NoMatch from './features/noMatch/NoMatch';
-import ProtectedRoute from './components/ProtectedRoute';
-import Login from './features/login/Login';
+import Layout from '../pages/layout/Layout';
+import Dashboard from '../pages/dashboard/Dashboard';
+import Staff from '../pages/staff/Staff';
+import NoMatch from '../pages/noMatch/NoMatch';
+import ProtectedRoute from '../common/routes/ProtectedRoute';
+import Login from '../pages/login/Login';
 
 function App() {
   return (
