@@ -7,13 +7,16 @@ import Layout from './features/layout/Layout';
 import Dashboard from './features/dashboard/Dashboard';
 import Staff from './features/staff/Staff';
 import NoMatch from './features/noMatch/NoMatch';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Dashboard />} />
-        <Route path="/staff" element={<Staff />} />
+        <Route element={<ProtectedRoute redirectPath="/login" user={null} />}>
+          <Route index element={<Dashboard />} />
+          <Route path="/staff" element={<Staff />} />
+        </Route>
         <Route path="*" element={<NoMatch />} />
       </Route>
     </Routes>
