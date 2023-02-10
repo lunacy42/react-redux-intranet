@@ -20,7 +20,7 @@ export const handlers = [
         })
       );
     }
-    // If authenticated, return a mocked user details
+    // If authenticated, return mocked user details
     return res(
       ctx.status(200),
       ctx.json({

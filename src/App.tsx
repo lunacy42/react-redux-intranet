@@ -8,11 +8,13 @@ import Dashboard from './features/dashboard/Dashboard';
 import Staff from './features/staff/Staff';
 import NoMatch from './features/noMatch/NoMatch';
 import ProtectedRoute from './components/ProtectedRoute';
+import Login from './features/login/Login';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route path="/login" element={<Login />} />
         <Route element={<ProtectedRoute redirectPath="/login" user={null} />}>
           <Route index element={<Dashboard />} />
           <Route path="/staff" element={<Staff />} />
