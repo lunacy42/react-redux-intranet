@@ -1,6 +1,12 @@
 export interface User {
   id: string;
-  name: string;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  department: string;
+  team: string;
+  img: string;
 }
 
 export interface LoginUser {

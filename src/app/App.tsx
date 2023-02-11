@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import { Counter } from '../features/counter/Counter';
 import './App.css';
@@ -9,10 +9,16 @@ import Staff from '../pages/staff/Staff';
 import NoMatch from '../pages/noMatch/NoMatch';
 import ProtectedRoute from '../common/routes/ProtectedRoute';
 import Login from '../pages/login/Login';
-import { useAppSelector } from './hooks';
+import { useAppDispatch, useAppSelector } from './hooks';
+import { login } from '../features/auth/authSlice';
 
 function App() {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(login({ email: '', password: '' }));
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

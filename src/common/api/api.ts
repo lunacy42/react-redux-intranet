@@ -17,9 +17,9 @@ export const loginUser = async (email: string, password: string) => {
   }
 };
 
-export const getUser = async () => {
+export const getUsers = async () => {
   try {
-    const response = await fetch('api/user', {
+    const response = await fetch('api/users', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

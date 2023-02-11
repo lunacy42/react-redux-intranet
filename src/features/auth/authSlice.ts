@@ -3,14 +3,14 @@ import { RootState, AppThunk } from '../../app/store';
 import { loginUser } from '../../common/api/api';
 import { LoginUser, User } from '../../common/types';
 
-export interface UserState {
+export interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 }
 
-const initialState: UserState = {
+const initialState: AuthState = {
   user: null,
   isAuthenticated: false,
   status: 'idle',
