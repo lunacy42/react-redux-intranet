@@ -29,17 +29,23 @@ const Login = () => {
     <div>
       <h1>Login</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="email" placeholder="email" {...register('email', { required: true })} />
-        {errors.email && <span>This field is required</span>}
+        <input
+          data-testid="input-email"
+          type="email"
+          placeholder="email"
+          {...register('email', { required: true })}
+        />
+        {errors.email && <span data-testid="error-email">This field is required</span>}
 
         <input
+          data-testid="input-password"
           type="password"
           placeholder="password"
           {...register('password', { required: true })}
         />
-        {errors.password && <span>This field is required</span>}
+        {errors.password && <span data-testid="error-password">This field is required</span>}
 
-        <input type="submit" />
+        <input data-testid="login-submit" type="submit" />
       </form>
     </div>
   );
