@@ -62,9 +62,9 @@ export const handlers = [
         },
         {
           id: '41bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
-          username: 'fibi',
-          email: 'fibi@pear.de',
-          firstName: 'Fibi',
+          username: 'hannah',
+          email: 'hannah@pear.de',
+          firstName: 'Hannah',
           lastName: null,
           department: 'IT',
           team: 'development',

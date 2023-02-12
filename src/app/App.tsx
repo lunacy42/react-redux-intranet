@@ -26,6 +26,7 @@ function App() {
         <Route element={<ProtectedRoute redirectPath="/login" isAuthenticated={isAuthenticated} />}>
           <Route index element={<Dashboard />} />
           <Route path="/staff" element={<Staff />} />
+          <Route path="/staff/:firstName" element={<Staff />} />
         </Route>
         <Route path="*" element={<NoMatch />} />
       </Route>

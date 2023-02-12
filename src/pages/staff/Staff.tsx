@@ -39,8 +39,14 @@ const Staff = () => {
         {selectedUsers?.map((user: User) => {
           return (
             <div key={user.id} className={styles.card}>
-              <img src={user.img} alt={user.firstName} className={styles.img} />
-              <Link className={styles.link} to={`/staff/${user.id}`}></Link>
+              <img
+                width={250}
+                height={250}
+                src={user.img}
+                alt={user.firstName}
+                className={styles.img}
+              />
+              <Link className={styles.link} to={`/staff/${user.firstName}`}></Link>
               <div>
                 <p className={styles.staffName}>{user.firstName}</p>
               </div>
