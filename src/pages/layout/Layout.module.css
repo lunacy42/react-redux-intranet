@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.pageTitle {
+  text-decoration: none !important;
+  color: #000;
+}
+
+.main {
+  padding: 24px;
+}

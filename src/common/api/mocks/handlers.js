@@ -65,7 +65,7 @@ export const handlers = [
           username: 'hannah',
           email: 'hannah@pear.de',
           firstName: 'Hannah',
-          lastName: null,
+          lastName: '',
           department: 'IT',
           team: 'development',
           jobTitle: 'Feelgood Managerin',

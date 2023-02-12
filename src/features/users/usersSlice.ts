@@ -1,7 +1,8 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
 import { getUsers, loginUser } from '../../common/api/api';
-import { LoginUser, User } from '../../common/types';
+import { Filters, LoginUser, User } from '../../common/types';
+import { FiltersState } from '../filters/filtersSlice';
 
 export interface UsersState {
   users: User[] | [];
@@ -49,5 +50,26 @@ export const usersSlice = createSlice({
 
 export const selectUsers = (state: RootState) => state.users.users;
 export const selectUsersStatus = (state: RootState) => state.users.status;
+
+export const selectFilteredUsers = createSelector(
+  selectUsers,
+  (state: RootState) => state.filters,
+  (users: User[], filters: FiltersState) => {
+    const { department, name } = filters;
+
+    const filteredUsers = users.filter((user: User) => {
+      const hasDepartment = department ? user.department === department : true;
+      if (name.length > 0) {
+        const hasName =
+          user.firstName.toLowerCase().includes(name.toLowerCase()) ||
+          user.lastName.toLowerCase().includes(name.toLowerCase()) ||
+          user.username.includes(name.toLowerCase());
+        return hasDepartment && hasName;
+      }
+      return hasDepartment;
+    });
+    return filteredUsers;
+  }
+);
 
 export default usersSlice.reducer;

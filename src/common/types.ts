@@ -9,6 +9,11 @@ export interface User {
   img: string;
 }
 
+export interface Filters {
+  department: string | null;
+  name: string;
+}
+
 export interface LoginUser {
   email: string;
   password: string;

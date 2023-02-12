@@ -1,0 +1,12 @@
+.header {
+  margin: 24px;
+}
+
+.page-title {
+  text-decoration: none !important;
+  color: #000;
+}
+
+.main {
+  padding: 24px;
+}

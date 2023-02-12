@@ -3,40 +3,65 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { User } from '../../common/types';
-import { fetchUsers, selectUsers, selectUsersStatus } from '../../features/users/usersSlice';
+import AutocompleteButton from '../../components/AutocompleteButton';
+import SearchField from '../../components/SearchField';
+import {
+  departmentFilterChanged,
+  nameFilterChanged,
+  selectDepartmentFilter,
+  selectNameFilter
+} from '../../features/filters/filtersSlice';
+import {
+  fetchUsers,
+  selectUsers,
+  selectUsersStatus,
+  selectFilteredUsers
+} from '../../features/users/usersSlice';
 import styles from './Staff.module.css';
 
 const Staff = () => {
-  const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
-  const [selectedUsers, setSelectedUsers] = useState<User[] | [] | null>(null);
+  const searchNameValue = useSelector(selectNameFilter);
+  const selectedDepartment = useSelector(selectDepartmentFilter);
   const users = useSelector(selectUsers);
   const usersStatus = useSelector(selectUsersStatus);
+  const filteredUsers = useSelector(selectFilteredUsers);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log('usersStatus', usersStatus, users);
     if (usersStatus === 'idle') {
       dispatch(fetchUsers());
     }
-    if (usersStatus === 'succeeded') {
-      setSelectedUsers(users);
-    }
   }, [usersStatus, users, dispatch]);
 
-  useEffect(() => {
-    if (usersStatus === 'succeeded') {
-      if (selectedUsers) {
-        setSelectedUsers(users.filter((user) => user.department === selectedDepartment));
-      } else {
-        setSelectedUsers(users);
-      }
-    }
-  }, [usersStatus, selectedDepartment]);
+  const getDepartments = () => {
+    const departments = users.map((user) => user.department);
+    console.log('departments', departments);
+    const uniqueDepartments = [...new Set(departments)];
+
+    return uniqueDepartments;
+  };
   return (
     <div>
-      <h1>Staff</h1>
+      <div className={styles.pageHeader}>
+        <div className="title">
+          <h2>Staff</h2>
+        </div>
+        <div className={styles.filterSearchFields}>
+          <AutocompleteButton
+            options={getDepartments()}
+            setOption={(value) => dispatch(departmentFilterChanged(value))}
+            searchParameter="departments"
+          />
+          <SearchField
+            value={searchNameValue}
+            handleChange={(value) => dispatch(nameFilterChanged(value))}
+            searchParameter="name"
+          />
+        </div>
+      </div>
       <div className={styles.grid}>
-        {selectedUsers?.map((user: User) => {
+        {usersStatus === 'succeeded' && filteredUsers?.length === 0 && <p>No Staff found.</p>}
+        {filteredUsers?.map((user: User) => {
           return (
             <div key={user.id} className={styles.card}>
               <img
