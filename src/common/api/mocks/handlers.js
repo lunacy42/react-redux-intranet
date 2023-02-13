@@ -36,18 +36,30 @@ export const handlers = [
           department: 'IT',
           team: 'sys-admin',
           jobTitle: 'System Administrator',
-          img: 'staffm1.jpg'
+          img: 'staffm1.jpg',
+          telephone: '+49 179 22 33 445',
+          location: 'Hamburg',
+          room: '12b',
+          availability: 'Monday until Friday 8am - 5pm',
+          notice: 'I will not be available this Thursday afternoon.',
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '21bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
-          username: 'caro',
-          email: 'carolin.ivens@pear.de',
-          firstName: 'Carolin',
-          lastName: 'Ivens',
+          username: 'karla',
+          email: 'karla.egon@pear.de',
+          firstName: 'Karla',
+          lastName: 'Egon',
           department: 'IT',
           team: 'development',
           jobTitle: 'Frontend Developerin React',
-          img: 'stafff4.jpg'
+          img: 'stafff4.jpg',
+          telephone: '+49 179 22 33 445',
+          location: 'Hamburg',
+          room: '12b',
+          availability: 'Monday until Friday 8am - 5pm',
+          notice: 'I will not be available this Thursday afternoon.',
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '31bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -58,7 +70,13 @@ export const handlers = [
           department: 'IT',
           team: 'development',
           jobTitle: 'Backend Developerin',
-          img: 'stafff3.jpg'
+          img: 'stafff3.jpg',
+          telephone: '+49 179 22 33 445',
+          location: 'Hamburg',
+          room: '12b',
+          availability: 'Monday until Friday 8am - 5pm',
+          notice: 'I will not be available this Thursday afternoon.',
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '41bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -69,7 +87,13 @@ export const handlers = [
           department: 'IT',
           team: 'development',
           jobTitle: 'Feelgood Managerin',
-          img: 'staffdf.jpg'
+          img: 'staffdf.jpg',
+          telephone: '+49 179 22 33 445',
+          location: 'Hamburg',
+          room: '12b',
+          availability: 'Monday until Friday 8am - 5pm',
+          notice: 'I will not be available this Thursday afternoon.',
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '51bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -80,7 +104,13 @@ export const handlers = [
           department: 'IT',
           team: 'development',
           jobTitle: 'Backend Developer',
-          img: 'staffm2.jpg'
+          img: 'staffm2.jpg',
+          telephone: '+49 179 22 33 445',
+          location: 'Hamburg',
+          room: '12b',
+          availability: 'Monday until Friday 8am - 5pm',
+          notice: 'I will not be available this Thursday afternoon.',
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '61bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -90,7 +120,14 @@ export const handlers = [
           lastName: 'Betel',
           department: 'Marketing',
           team: 'digital',
-          img: 'staffm1.jpg'
+          jobTitle: 'Backend Developer',
+          img: 'staffm1.jpg',
+          telephone: '+49 179 22 33 445',
+          location: 'Hamburg',
+          room: '12b',
+          availability: 'Monday until Friday 8am - 5pm',
+          notice: 'I will not be available this Thursday afternoon.',
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '71bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -100,7 +137,14 @@ export const handlers = [
           lastName: 'Steub',
           department: 'Marketing',
           team: 'print',
-          img: 'stafff2.jpg'
+          jobTitle: 'Backend Developer',
+          img: 'stafff2.jpg',
+          telephone: '+49 179 22 33 445',
+          location: 'Hamburg',
+          room: '12b',
+          availability: 'Monday until Friday 8am - 5pm',
+          notice: 'I will not be available this Thursday afternoon.',
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '81bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -110,7 +154,14 @@ export const handlers = [
           lastName: 'Schulz',
           department: 'Personalmanagement',
           team: 'recruitment',
-          img: 'stafff1.jpg'
+          jobTitle: 'Personal Recruiting Manager',
+          img: 'stafff1.jpg',
+          telephone: '+49 179 22 33 445',
+          location: 'Hamburg',
+          room: '12b',
+          availability: 'Monday until Friday 8am - 5pm',
+          notice: 'I will not be available this Thursday afternoon.',
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         }
       ])
     );

@@ -1,0 +1,71 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 1 / 1.5;
+  background-color: #eee;
+}
+
+.card:hover {
+  background-color: #ddd;
+  transition: 0.4s;
+}
+
+.card:active {
+  background-color: #aaa;
+}
+
+.img {
+  width: 100%;
+  height: 45%;
+  object-fit: cover;
+}
+
+.link {
+  position: absolute;
+  inset: 0;
+}
+
+.staffInfo {
+  text-align: center;
+  font-size: 12px;
+  margin: 12px;
+}
+
+.staffName {
+  text-align: center;
+  font-size: 16px;
+}
+
+.staffJobTitle {
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.staffInfoBlock {
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+}
+
+.staffInfoField {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+}
+
+.staffInfoField p {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.icon {
+  margin-right: 24px;
+  font-size: 16px;
+}

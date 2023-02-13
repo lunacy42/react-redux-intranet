@@ -6,6 +6,13 @@ export interface User {
   lastName: string;
   department: string;
   team: string;
+  jobTitle: string;
+  telephone: string;
+  location: string;
+  room: string;
+  availability: string;
+  notice: string;
+  noticeDate: string;
   img: string;
 }
 

@@ -1,6 +1,6 @@
 import FilterFields from '../../features/filters/FilterFields';
 import UsersList from '../../features/users/UsersList';
-import styles from './Staff.module.css';
+import styles from './Staff.module.scss';
 
 const Staff = () => {
   return (

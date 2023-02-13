@@ -4,7 +4,7 @@ import AutocompleteButton from '../../components/AutocompleteButton';
 import SearchField from '../../components/SearchField';
 import { departmentFilterChanged, nameFilterChanged, selectNameFilter } from './filtersSlice';
 import { selectUsers } from '../users/usersSlice';
-import styles from './FilterFields.module.css';
+import styles from './FilterFields.module.scss';
 
 const FilterFields = () => {
   const searchNameValue = useSelector(selectNameFilter);

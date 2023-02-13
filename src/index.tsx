@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { setupStore } from './app/store';
 import App from './app/App';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
+import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
 
 if (process.env.NODE_ENV === 'development') {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import { Counter } from '../features/counter/Counter';
-import './App.css';
+import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../pages/layout/Layout';
 import Dashboard from '../pages/dashboard/Dashboard';
