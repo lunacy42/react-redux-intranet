@@ -18,6 +18,7 @@ export const loginUser = async (email: string, password: string) => {
 };
 
 export const getUsers = async () => {
+  let responseJsonData;
   try {
     const response = await fetch('api/users', {
       method: 'GET',
@@ -25,9 +26,13 @@ export const getUsers = async () => {
         'Content-Type': 'application/json'
       }
     });
-    const responseJsonData = await response.json();
-    return responseJsonData;
-  } catch (e) {
-    return { apiError: e };
+    responseJsonData = await response.json();
+
+    if (response.ok) {
+      return responseJsonData;
+    }
+    throw new Error(response.statusText);
+  } catch (e: any) {
+    return Promise.reject(e.message ? e.message : responseJsonData);
   }
 };

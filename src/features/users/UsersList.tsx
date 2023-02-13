@@ -37,7 +37,7 @@ const UsersList = () => {
           { icon: <RiDoorOpenFill />, info: user.room }
         ];
         return (
-          <div key={user.id} className={styles.card}>
+          <div key={user.id} className={styles.card} data-testid="users-card">
             <img src={user.img} alt={user.firstName} className={styles.img} />
             <Link className={styles.link} to={`/staff/${user.username}`}></Link>
             <div className={styles.staffInfo}>
@@ -47,7 +47,7 @@ const UsersList = () => {
               <p className={styles.staffJobTitle}>{user.jobTitle}</p>
               <div className={styles.staffInfoBlock}>
                 {staffInfos.map((staffInfo) => (
-                  <div key="staffInfo.info" className={styles.staffInfoField}>
+                  <div key={staffInfo.info} className={styles.staffInfoField}>
                     <div className={styles.icon}>{staffInfo.icon}</div>
                     <p>{staffInfo.info}</p>
                   </div>
