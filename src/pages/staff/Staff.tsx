@@ -6,7 +6,7 @@ const Staff = () => {
   return (
     <div>
       <div className={styles.pageHeader}>
-        <div className="title">
+        <div>
           <h2>Staff</h2>
         </div>
         <FilterFields />

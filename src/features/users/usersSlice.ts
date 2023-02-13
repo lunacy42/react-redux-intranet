@@ -50,6 +50,8 @@ export const usersSlice = createSlice({
 
 export const selectUsers = (state: RootState) => state.users.users;
 export const selectUsersStatus = (state: RootState) => state.users.status;
+export const selectUserByUsername = (state: RootState, username: string) =>
+  state.users.users.find((user: User) => user.username === username);
 
 export const selectFilteredUsers = createSelector(
   selectUsers,

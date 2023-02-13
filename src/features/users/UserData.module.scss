@@ -1,0 +1,60 @@
+.page {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 16px;
+}
+
+.jobTitle {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.img {
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+  margin-top: 24px;
+}
+
+.leftBlock {
+  width: 250px;
+  margin-right: 50px;
+}
+
+.leftBlock p {
+  width: 250px;
+  margin-bottom: 24px;
+  text-overflow: unset;
+  white-space: unset;
+  overflow: unset;
+  line-break: normal;
+}
+
+.staffName {
+  text-align: center;
+  font-size: 16px;
+}
+
+.userInfo {
+  margin-top: 18px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.userInfoField {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+}
+
+.userInfoField p {
+  font-size: 14px;
+}
+
+.icon {
+  margin-right: 24px;
+  font-size: 18px;
+}
