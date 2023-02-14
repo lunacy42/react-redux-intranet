@@ -11,6 +11,7 @@ const Layout = () => {
         <div className={styles.nav}>
           <Link to={`/`}>Dashboard</Link>
           <Link to={`/staff`}>Staff</Link>
+          <Link to={`/edit-user`}>My Page</Link>
         </div>
       </div>
       <hr />

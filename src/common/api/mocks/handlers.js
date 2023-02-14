@@ -7,7 +7,7 @@ export const handlers = [
       // Respond with a 200 status code
       ctx.status(200),
       ctx.json({
-        username: 'admin'
+        id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc000'
       })
     );
   }),
@@ -166,5 +166,9 @@ export const handlers = [
         }
       ])
     );
+  }),
+  rest.post('/api/update-user', async (req, res, ctx) => {
+    const user = await req.json();
+    return res(ctx.status(200), ctx.json(user));
   })
 ];

@@ -13,7 +13,6 @@ const FilterFields = () => {
 
   const getDepartments = () => {
     const departments = users.map((user) => user.department);
-    console.log('departments', departments);
     const uniqueDepartments = [...new Set(departments)];
 
     return uniqueDepartments;

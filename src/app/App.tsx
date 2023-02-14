@@ -12,6 +12,7 @@ import Login from '../pages/login/Login';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { login } from '../features/auth/authSlice';
 import User from '../pages/user/User';
+import SingleStaff from '../pages/singleStaff/SingleStaff';
 
 function App() {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
@@ -26,8 +27,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route element={<ProtectedRoute redirectPath="/login" isAuthenticated={isAuthenticated} />}>
           <Route index element={<Dashboard />} />
+          <Route path="/edit-user" element={<User />} />
           <Route path="/staff" element={<Staff />} />
-          <Route path="/staff/:username" element={<User />} />
+          <Route path="/staff/:username" element={<SingleStaff />} />
         </Route>
         <Route path="*" element={<NoMatch />} />
       </Route>

@@ -1,18 +1,23 @@
 import { createAsyncThunk, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
-import { getUsers, loginUser } from '../../common/api/api';
-import { Filters, LoginUser, User } from '../../common/types';
+import { RootState } from '../../app/store';
+import { getUsers, mutateUser } from '../../common/api/api';
+import { User } from '../../common/types';
+import { AuthState } from '../auth/authSlice';
 import { FiltersState } from '../filters/filtersSlice';
 
 export interface UsersState {
-  users: User[] | [];
+  users: User[];
+  currentUserId: string | null;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  updateStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 }
 
 const initialState: UsersState = {
   users: [],
+  currentUserId: null,
   status: 'idle',
+  updateStatus: 'idle',
   error: null
 };
 
@@ -25,11 +30,23 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   }
 });
 
+export const updateUser = createAsyncThunk('users/updateUser', async (user: User) => {
+  try {
+    const response = await mutateUser(user);
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+
 export const usersSlice = createSlice({
   name: 'users',
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
-  reducers: {},
+  reducers: {
+    setCurrentUserId: (state, action: PayloadAction<string | null>) => {
+      state.currentUserId = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state, action) => {
@@ -37,11 +54,26 @@ export const usersSlice = createSlice({
       })
       .addCase(fetchUsers.fulfilled, (state, action: PayloadAction<any>) => {
         state.status = 'succeeded';
-        // Add any fetched posts to the array
         state.users = action.payload;
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.status = 'failed';
+        state.users = [];
+        state.error = action.error.message;
+      })
+      .addCase(updateUser.pending, (state, action) => {
+        state.updateStatus = 'loading';
+      })
+      .addCase(updateUser.fulfilled, (state, action: PayloadAction<any>) => {
+        state.updateStatus = 'succeeded';
+        const users = state.users;
+        const newUsers = users.map((user: User) =>
+          user.id === action.payload.id ? action.payload : user
+        );
+        state.users = newUsers;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.updateStatus = 'failed';
         state.users = [];
         state.error = action.error.message;
       });
@@ -73,5 +105,18 @@ export const selectFilteredUsers = createSelector(
     return filteredUsers;
   }
 );
+
+export const selectCurrentUser = createSelector(
+  selectUsers,
+  (state: RootState) => state.auth,
+  (users: User[], auth: AuthState) => {
+    const { userId } = auth;
+
+    const currentUser = users.find((user: User) => user.id === userId) || null;
+    return currentUser;
+  }
+);
+
+export const { setCurrentUserId } = usersSlice.actions;
 
 export default usersSlice.reducer;

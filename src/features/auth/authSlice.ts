@@ -4,14 +4,14 @@ import { loginUser } from '../../common/api/api';
 import { LoginUser, User } from '../../common/types';
 
 export interface AuthState {
-  user: User | null;
+  userId: string | null;
   isAuthenticated: boolean;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 }
 
 const initialState: AuthState = {
-  user: null,
+  userId: null,
   isAuthenticated: false,
   status: 'idle',
   error: null
@@ -20,7 +20,7 @@ const initialState: AuthState = {
 export const login = createAsyncThunk('auth/login', async (user: LoginUser, thunkAPI) => {
   try {
     const response = await loginUser(user.email, user.password);
-    return response.data;
+    return response;
   } catch (error) {
     return error;
   }
@@ -29,7 +29,6 @@ export const login = createAsyncThunk('auth/login', async (user: LoginUser, thun
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -38,13 +37,12 @@ export const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action: PayloadAction<any>) => {
         state.status = 'succeeded';
-        // Add any fetched posts to the array
-        state.user = action.payload;
+        state.userId = action.payload.id;
         state.isAuthenticated = true;
       })
       .addCase(login.rejected, (state, action) => {
         state.status = 'failed';
-        state.user = null;
+        state.userId = null;
         state.isAuthenticated = false;
         state.error = action.error.message;
       });

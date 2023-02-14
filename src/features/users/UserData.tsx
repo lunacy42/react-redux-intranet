@@ -24,16 +24,7 @@ interface UserDataProps {
 }
 
 const UserData = ({ username }: UserDataProps) => {
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const user = useSelector((state: RootState) => selectUserByUsername(state, username));
-
-  useEffect(() => {
-    console.log(
-      'selectedImage',
-      selectedImage,
-      selectedImage && URL.createObjectURL(selectedImage)
-    );
-  }, [selectedImage]);
 
   if (!user) {
     return (
