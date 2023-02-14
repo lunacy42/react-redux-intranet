@@ -13,13 +13,19 @@ import { useAppDispatch, useAppSelector } from './hooks';
 import { login } from '../features/auth/authSlice';
 import User from '../pages/user/User';
 import SingleStaff from '../pages/singleStaff/SingleStaff';
+import { fetchUsers, selectUsersStatus } from '../features/users/usersSlice';
+import { useSelector } from 'react-redux';
 
 function App() {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+  const usersStatus = useSelector(selectUsersStatus);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(login({ email: '', password: '' }));
-  }, []);
+    if (usersStatus === 'idle') {
+      dispatch(fetchUsers());
+    }
+  }, [usersStatus]);
 
   return (
     <Routes>

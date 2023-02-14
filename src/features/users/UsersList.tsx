@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks';
 import { User } from '../../common/types';
-import { fetchUsers, selectUsers, selectUsersStatus, selectFilteredUsers } from './usersSlice';
+import { selectUsersStatus, selectFilteredUsers } from './usersSlice';
 import styles from './UsersList.module.scss';
 import { MdOutlineLocationOn } from 'react-icons/md';
 import { MdMyLocation } from 'react-icons/md';
@@ -13,16 +12,8 @@ import { AiFillPhone } from 'react-icons/ai';
 import { RiDoorOpenFill } from 'react-icons/ri';
 
 const UsersList = () => {
-  const users = useSelector(selectUsers);
   const usersStatus = useSelector(selectUsersStatus);
   const filteredUsers = useSelector(selectFilteredUsers);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (usersStatus === 'idle') {
-      dispatch(fetchUsers());
-    }
-  }, [usersStatus, users, dispatch]);
 
   return (
     <div className={styles.grid}>
