@@ -106,6 +106,16 @@ export const selectFilteredUsers = createSelector(
   }
 );
 
+export const selectNewUsers = createSelector(selectUsers, (users: User[]) => {
+  const newUsers = users.filter((user: User) => {
+    const date = new Date();
+    date.setDate(date.getDate() - 30);
+    const userDate = new Date(user.created);
+    return userDate > date;
+  });
+  return newUsers;
+});
+
 export const selectCurrentUser = createSelector(
   selectUsers,
   (state: RootState) => state.auth,

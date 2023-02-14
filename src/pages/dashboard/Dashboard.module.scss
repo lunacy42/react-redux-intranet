@@ -1,0 +1,30 @@
+.blockRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  gap: 24px;
+}
+.anouncementsBlock {
+  display: flex;
+  width: 33%;
+  border: 1px solid grey;
+  height: 100%;
+}
+
+.newStaffBlock {
+  width: 33%;
+  border: 1px solid grey;
+  height: auto;
+}
+
+.eventsBlock {
+  width: 33%;
+  border: 1px solid grey;
+  height: 100%;
+}
+
+.blockContent {
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-bottom: 24px;
+}

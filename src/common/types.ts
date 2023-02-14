@@ -15,6 +15,7 @@ export interface User {
   noticeDate: string;
   img: string;
   role: string;
+  created: string;
 }
 
 export interface Filters {

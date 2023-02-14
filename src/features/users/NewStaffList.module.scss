@@ -1,0 +1,8 @@
+.grid {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  gap: 12px;
+  height: 100%;
+  padding-bottom: 24px;
+}

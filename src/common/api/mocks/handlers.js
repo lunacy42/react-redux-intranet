@@ -44,7 +44,8 @@ export const handlers = [
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
           noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
-          role: 'admin'
+          role: 'admin',
+          created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '21bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -62,7 +63,8 @@ export const handlers = [
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
           noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
-          role: 'user'
+          role: 'user',
+          created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '31bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -80,7 +82,8 @@ export const handlers = [
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
           noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
-          role: 'user'
+          role: 'user',
+          created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '41bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -98,7 +101,8 @@ export const handlers = [
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
           noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
-          role: 'user'
+          role: 'user',
+          created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '51bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -116,7 +120,8 @@ export const handlers = [
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
           noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
-          role: 'user'
+          role: 'user',
+          created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '61bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -134,7 +139,8 @@ export const handlers = [
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
           noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
-          role: 'user'
+          role: 'user',
+          created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '71bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -152,7 +158,8 @@ export const handlers = [
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
           noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
-          role: 'user'
+          role: 'user',
+          created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         },
         {
           id: '81bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -170,7 +177,8 @@ export const handlers = [
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
           noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
-          role: 'user'
+          role: 'user',
+          created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
         }
       ])
     );
