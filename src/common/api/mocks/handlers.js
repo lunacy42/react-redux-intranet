@@ -43,7 +43,8 @@ export const handlers = [
           room: '12b',
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
-          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
+          role: 'admin'
         },
         {
           id: '21bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -60,7 +61,8 @@ export const handlers = [
           room: '12b',
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
-          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
+          role: 'user'
         },
         {
           id: '31bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -77,7 +79,8 @@ export const handlers = [
           room: '12b',
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
-          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
+          role: 'user'
         },
         {
           id: '41bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -94,7 +97,8 @@ export const handlers = [
           room: '12b',
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
-          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
+          role: 'user'
         },
         {
           id: '51bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -111,7 +115,8 @@ export const handlers = [
           room: '12b',
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
-          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
+          role: 'user'
         },
         {
           id: '61bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -128,7 +133,8 @@ export const handlers = [
           room: '12b',
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
-          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
+          role: 'user'
         },
         {
           id: '71bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -145,7 +151,8 @@ export const handlers = [
           room: '12b',
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
-          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
+          role: 'user'
         },
         {
           id: '81bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
@@ -162,7 +169,8 @@ export const handlers = [
           room: '12b',
           availability: 'Monday until Friday 8am - 5pm',
           notice: 'I will not be available this Thursday afternoon.',
-          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100'
+          noticeDate: 'Thu Jan 26 2023 11:34:08 GMT+0100',
+          role: 'user'
         }
       ])
     );
