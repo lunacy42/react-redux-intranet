@@ -12,7 +12,7 @@ const UsersList = () => {
     <div className={styles.grid}>
       {usersStatus === 'succeeded' && filteredUsers?.length === 0 && <p>No Staff found.</p>}
       {filteredUsers?.map((user: User) => {
-        return <UserCard key={user.id} user={user} />;
+        return <UserCard key={user.id} user={user} cardRef={null} />;
       })}
     </div>
   );

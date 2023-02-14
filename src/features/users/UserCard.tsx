@@ -7,12 +7,14 @@ import { AiOutlineTeam } from 'react-icons/ai';
 import { HiOutlineMail } from 'react-icons/hi';
 import { AiFillPhone } from 'react-icons/ai';
 import { RiDoorOpenFill } from 'react-icons/ri';
+import { useRef } from 'react';
 
 interface UserCardProps {
   user: User;
+  cardRef: { current: null | HTMLDivElement } | null;
 }
 
-const UserCard = ({ user }: UserCardProps) => {
+const UserCard = ({ user, cardRef }: UserCardProps) => {
   const staffInfos = [
     { icon: <MdOutlineLocationOn />, info: user.location },
     { icon: <MdMyLocation />, info: user.department },
@@ -22,7 +24,7 @@ const UserCard = ({ user }: UserCardProps) => {
     { icon: <RiDoorOpenFill />, info: user.room }
   ];
   return (
-    <div className={styles.card} data-testid="users-card">
+    <div ref={cardRef} className={styles.card} data-testid="users-card">
       <img src={user.img} alt={user.firstName} className={styles.img} />
       <Link className={styles.link} to={`/staff/${user.username}`}></Link>
       <div className={styles.staffInfo}>
