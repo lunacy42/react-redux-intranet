@@ -91,28 +91,30 @@ export const selectFilteredUsers = createSelector(
   (users: User[], filters: FiltersState) => {
     const { department, name } = filters;
 
-    const filteredUsers = users.filter((user: User) => {
-      const hasDepartment = department ? user.department === department : true;
-      if (name.length > 0) {
-        const hasName =
-          user.firstName.toLowerCase().includes(name.toLowerCase()) ||
-          user.lastName.toLowerCase().includes(name.toLowerCase()) ||
-          user.username.includes(name.toLowerCase());
-        return hasDepartment && hasName;
-      }
-      return hasDepartment;
-    });
+    const filteredUsers =
+      users?.filter((user: User) => {
+        const hasDepartment = department ? user.department === department : true;
+        if (name.length > 0) {
+          const hasName =
+            user.firstName.toLowerCase().includes(name.toLowerCase()) ||
+            user.lastName.toLowerCase().includes(name.toLowerCase()) ||
+            user.username.includes(name.toLowerCase());
+          return hasDepartment && hasName;
+        }
+        return hasDepartment;
+      }) || null;
     return filteredUsers;
   }
 );
 
 export const selectNewUsers = createSelector(selectUsers, (users: User[]) => {
-  const newUsers = users.filter((user: User) => {
-    const date = new Date();
-    date.setDate(date.getDate() - 30);
-    const userDate = new Date(user.created);
-    return userDate > date;
-  });
+  const newUsers =
+    users?.filter((user: User) => {
+      const date = new Date();
+      date.setDate(date.getDate() - 30);
+      const userDate = new Date(user.created);
+      return userDate > date;
+    }) || null;
   return newUsers;
 });
 
