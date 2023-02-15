@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { User } from '../../common/types';
-import { selectUsersStatus, selectFilteredUsers } from './usersSlice';
+import { User } from '../../../common/types';
+import { selectUsersStatus, selectFilteredUsers } from './../usersSlice';
 import styles from './UsersList.module.scss';
 import UserCard from './UserCard';
 

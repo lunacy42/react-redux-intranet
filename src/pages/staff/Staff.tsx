@@ -1,5 +1,5 @@
 import FilterFields from '../../features/filters/FilterFields';
-import UsersList from '../../features/users/UsersList';
+import UsersList from '../../features/users/components/UsersList';
 import styles from './Staff.module.scss';
 
 const Staff = () => {

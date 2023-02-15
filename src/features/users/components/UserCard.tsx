@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { User } from '../../common/types';
+import { User } from '../../../common/types';
 import styles from './UserCard.module.scss';
 import { MdOutlineLocationOn } from 'react-icons/md';
 import { MdMyLocation } from 'react-icons/md';
@@ -7,7 +7,6 @@ import { AiOutlineTeam } from 'react-icons/ai';
 import { HiOutlineMail } from 'react-icons/hi';
 import { AiFillPhone } from 'react-icons/ai';
 import { RiDoorOpenFill } from 'react-icons/ri';
-import { useRef } from 'react';
 
 interface UserCardProps {
   user: User;

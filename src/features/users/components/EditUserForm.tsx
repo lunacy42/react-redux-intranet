@@ -1,9 +1,9 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import { useForm } from 'react-hook-form';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { selectCurrentUser, updateUser } from './usersSlice';
-import { User } from '../../common/types';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { selectCurrentUser, updateUser } from './../usersSlice';
+import { User } from '../../../common/types';
 import UserData from './UserData';
 
 type FormData = {

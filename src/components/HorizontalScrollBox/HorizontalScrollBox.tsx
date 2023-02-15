@@ -15,7 +15,7 @@ const HorizontalScrollBox = ({ children, cardRef }: HorizontalScrollBoxProps) =>
   const setButtonVisability = () => {
     setTimeout(() => {
       const containerWidth = scrollContainerRef?.current
-        ? scrollContainerRef.current.offsetWidth + 24
+        ? scrollContainerRef.current.offsetWidth + 14
         : 500;
       const totalScrollWidth = scrollContainerRef?.current
         ? scrollContainerRef.current.scrollWidth

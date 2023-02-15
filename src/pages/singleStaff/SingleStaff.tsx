@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import FilterFields from '../../features/filters/FilterFields';
-import UserData from '../../features/users/UserData';
-import UsersList from '../../features/users/UsersList';
+import UserData from '../../features/users/components/UserData';
+import UsersList from '../../features/users/components/UsersList';
 import styles from './SingleStaff.module.scss';
 
 const SingleStaff = () => {

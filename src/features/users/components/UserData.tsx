@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks';
-import { User } from '../../common/types';
+import { useAppDispatch } from '../../../app/hooks';
+import { User } from '../../../common/types';
 import {
   fetchUsers,
   selectUsers,
   selectUsersStatus,
   selectFilteredUsers,
   selectUserByUsername
-} from './usersSlice';
+} from './../usersSlice';
 import styles from './UserData.module.scss';
 import { MdOutlineLocationOn } from 'react-icons/md';
 import { MdMyLocation } from 'react-icons/md';
@@ -17,7 +17,7 @@ import { AiOutlineTeam } from 'react-icons/ai';
 import { HiOutlineMail } from 'react-icons/hi';
 import { AiFillPhone } from 'react-icons/ai';
 import { RiDoorOpenFill } from 'react-icons/ri';
-import { RootState } from '../../app/store';
+import { RootState } from '../../../app/store';
 
 interface UserDataProps {
   username: string;

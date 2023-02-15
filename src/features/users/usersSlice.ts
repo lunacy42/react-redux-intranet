@@ -108,10 +108,11 @@ export const selectFilteredUsers = createSelector(
 );
 
 export const selectNewUsers = createSelector(selectUsers, (users: User[]) => {
+  // select users that were added in the last 60 days
   const newUsers =
     users?.filter((user: User) => {
       const date = new Date();
-      date.setDate(date.getDate() - 30);
+      date.setDate(date.getDate() - 60);
       const userDate = new Date(user.created);
       return userDate > date;
     }) || null;

@@ -3,12 +3,16 @@ import counterReducer from '../features/counter/counterSlice';
 import authReducer from '../features/auth/authSlice';
 import usersReducer from '../features/users/usersSlice';
 import filtersReducer from '../features/filters/filtersSlice';
+import announcementsReducer from '../features/announcements/announcementsSlice';
+import eventsReducer from '../features/events/eventsSlice';
 
 const rootReducer = combineReducers({
   counter: counterReducer,
   auth: authReducer,
   users: usersReducer,
-  filters: filtersReducer
+  filters: filtersReducer,
+  announcements: announcementsReducer,
+  events: eventsReducer
 });
 
 export const setupStore = () => {

@@ -1,4 +1,4 @@
-import EditUserForm from '../../features/users/EditUserForm';
+import EditUserForm from '../../features/users/components/EditUserForm';
 
 const User = () => {
   return (

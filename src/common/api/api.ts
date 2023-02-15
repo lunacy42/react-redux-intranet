@@ -61,3 +61,43 @@ export const mutateUser = async (user: User) => {
     return Promise.reject(e.message ? e.message : responseJsonData);
   }
 };
+
+export const getAnnouncements = async () => {
+  let responseJsonData;
+  try {
+    const response = await fetch('api/announcements', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    responseJsonData = await response.json();
+
+    if (response.ok) {
+      return responseJsonData;
+    }
+    throw new Error(response.statusText);
+  } catch (e: any) {
+    return Promise.reject(e.message ? e.message : responseJsonData);
+  }
+};
+
+export const getEvents = async () => {
+  let responseJsonData;
+  try {
+    const response = await fetch('api/events', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    responseJsonData = await response.json();
+
+    if (response.ok) {
+      return responseJsonData;
+    }
+    throw new Error(response.statusText);
+  } catch (e: any) {
+    return Promise.reject(e.message ? e.message : responseJsonData);
+  }
+};

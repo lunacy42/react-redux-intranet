@@ -15,15 +15,28 @@ import User from '../pages/user/User';
 import SingleStaff from '../pages/singleStaff/SingleStaff';
 import { fetchUsers, selectUsersStatus } from '../features/users/usersSlice';
 import { useSelector } from 'react-redux';
+import {
+  fetchAnnouncements,
+  selectAnnouncementsStatus
+} from '../features/announcements/announcementsSlice';
+import { fetchEvents, selectEventsStatus } from '../features/events/eventsSlice';
 
 function App() {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
   const usersStatus = useSelector(selectUsersStatus);
+  const announcementsStatus = useSelector(selectAnnouncementsStatus);
+  const eventsStatus = useSelector(selectEventsStatus);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(login({ email: '', password: '' }));
     if (usersStatus === 'idle') {
       dispatch(fetchUsers());
+    }
+    if (announcementsStatus === 'idle') {
+      dispatch(fetchAnnouncements());
+    }
+    if (eventsStatus === 'idle') {
+      dispatch(fetchEvents());
     }
   }, [usersStatus]);
 

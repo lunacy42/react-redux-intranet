@@ -27,3 +27,18 @@ export interface LoginUser {
   email: string;
   password: string;
 }
+export interface Announcement {
+  id: string;
+  title: string;
+  text: string;
+  created: string;
+}
+
+export interface Event {
+  id: string;
+  title: string;
+  text: string;
+  date: string;
+  img: string;
+  created: string;
+}
