@@ -1,0 +1,24 @@
+@import '../../assets/styles/_main.scss';
+
+.card {
+  position: relative;
+  aspect-ratio: 1 / 1.5;
+  background-color: #eee;
+}
+
+.img {
+  width: 100%;
+  height: 45%;
+  object-fit: cover;
+}
+
+.link {
+  position: absolute;
+  inset: 0;
+}
+
+.infoBox {
+  text-align: center;
+  @include text-small;
+  margin: 12px;
+}

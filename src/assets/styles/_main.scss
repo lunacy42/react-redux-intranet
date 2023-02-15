@@ -1,0 +1,35 @@
+$margin-regular: 2%;
+$margin-big: 4%;
+
+@mixin ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin text-regular {
+  font-size: 14px;
+}
+
+@mixin text-big {
+  font-size: 16px;
+}
+
+@mixin text-small {
+  font-size: 12px;
+}
+
+@mixin text-italic {
+  @include text-regular;
+  font-style: italic;
+}
+
+@mixin text-bold {
+  @include text-regular;
+  font-style: bold;
+}
+
+@mixin headline-1 {
+  font-size: 16px;
+  font-style: bold;
+}

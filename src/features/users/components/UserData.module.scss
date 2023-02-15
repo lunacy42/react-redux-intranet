@@ -1,14 +1,16 @@
+@import '../../../assets/styles/_main.scss';
+
 .page {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 16px;
+  @include text-big;
 }
 
 .jobTitle {
   font-style: italic;
-  font-size: 16px;
+  @include text-big;
 }
 
 .img {
@@ -34,12 +36,13 @@
 
 .staffName {
   text-align: center;
-  font-size: 16px;
+  @include text-big;
+  @include ellipsis;
 }
 
 .userInfo {
   margin-top: 18px;
-  font-size: 14px;
+  @include text-regular;
   text-align: left;
 }
 
@@ -51,7 +54,7 @@
 }
 
 .userInfoField p {
-  font-size: 14px;
+  @include text-regular;
 }
 
 .icon {

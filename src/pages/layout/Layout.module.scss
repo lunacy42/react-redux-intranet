@@ -1,16 +1,18 @@
+@import '../../assets/styles/_main.scss';
+
 .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: $margin-regular;
+  margin-right: $margin-regular;
 }
 .nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 4%;
+  gap: $margin-big;
 }
 
 .pageTitle {
@@ -19,5 +21,5 @@
 }
 
 .main {
-  padding: 2%;
+  padding: $margin-regular;
 }

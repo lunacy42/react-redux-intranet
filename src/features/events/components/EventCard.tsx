@@ -7,6 +7,7 @@ import { AiOutlineTeam } from 'react-icons/ai';
 import { HiOutlineMail } from 'react-icons/hi';
 import { AiFillPhone } from 'react-icons/ai';
 import { RiDoorOpenFill } from 'react-icons/ri';
+import Card from '../../../components/card/Card';
 
 interface EventCardProps {
   event: Event;
@@ -15,14 +16,11 @@ interface EventCardProps {
 
 const EventCard = ({ event, cardRef }: EventCardProps) => {
   return (
-    <div ref={cardRef} className={styles.card} data-testid="users-card">
-      <img src={event.img} alt={event.title} className={styles.img} />
-      <div className={styles.eventInfo}>
-        <p className={styles.eventName}>{event.title}</p>
-        <p className={styles.eventDate}>{new Date(event.date).toDateString()}</p>
-        <p className={styles.eventText}>{event.text}</p>
-      </div>
-    </div>
+    <Card cardRef={cardRef} image={event.img} alt={event.title}>
+      <p className={styles.eventName}>{event.title}</p>
+      <p className={styles.eventDate}>{new Date(event.date).toDateString()}</p>
+      <p className={styles.eventText}>{event.text}</p>
+    </Card>
   );
 };
 

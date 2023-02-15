@@ -3,13 +3,18 @@
 }
 
 .grid {
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
+  flex-direction: row;
   overflow-x: scroll;
   overflow-y: hidden;
   gap: 12px;
   height: 100%;
-  padding-bottom: 24px;
+  padding-bottom: 12px;
+}
+
+.grid > * {
+  width: 250px;
+  height: 415px;
 }
 
 .grid::-webkit-scrollbar {

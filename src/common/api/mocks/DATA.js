@@ -138,7 +138,7 @@ export const users = [
     email: 'katharina.schulz@pear.de',
     firstName: 'Katharina',
     lastName: 'Schulz',
-    department: 'Personalmanagement',
+    department: 'Human Resources',
     team: 'recruitment',
     jobTitle: 'Personal Recruiting Manager',
     img: '/stafff1.jpg',
@@ -156,20 +156,20 @@ export const users = [
 export const announcements = [
   {
     id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc001',
-    title: 'Niederlassung Hamburg geschlossen am 24.03.2023',
-    text: 'Wegen Renovierungsarbeiten sind die Örtlichkeiten in Hamburg am 24.03.2023 ganztägig geschlossen. Alle Mitarbeiter werden gebeten, Homeoffice zu machen',
+    title: 'Office in Hamburg closed on March 24th 2023',
+    text: 'Our office in Hamburg will be close whole day on March 24th 2023 because of renovation works. Please work from home on that day.',
     created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
   },
   {
     id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc001',
-    title: 'Neuer Zugangscode in Hamburg',
-    text: 'Ab dem 04.03.2023 ändert sich der Zugangscode. Ihr kommt dann mit dem Gründungsjahr der Beatles, 1960, ins Gebäude.',
+    title: 'New access code in Hamburg',
+    text: 'Starting on March 4th 2023 there will be a new access code available for our office in Hamburg. Please use the founding year of the Beatles, 1960, to enter our premises from than on.',
     created: 'Thu Feb 27 2023 11:34:08 GMT+0100'
   },
   {
     id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc001',
-    title: 'Firmenevent am 26.05. wird verschoben.',
-    text: 'Wegen der Renovierungsarbeiten kann unser Firmenevent nicht am vorgesehenen Datum stattfinden. Wir geben Euch Bescheid, sobald ein neuer Termin gefunden ist.',
+    title: 'Corporate event on May 26th will be delayed',
+    text: 'Because of the renovation works in our office in Hamburg we are sorry to announce that our corporate event that was planned for May 26th 2023 will not take place on that date. As soon as we find an alternative date we will announce it here!',
     created: 'Sat Jan 28 2023 11:34:08 GMT+0100'
   }
 ];
@@ -177,18 +177,18 @@ export const announcements = [
 export const events = [
   {
     id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc001',
-    title: 'Meetup PHP Usergroup Hamburg',
+    title: 'Meetup PHP Usergroup',
     date: 'Thu Feb 26 2023 19:00:00 GMT+0100',
-    text: 'Das legendäre Meetup der PHP Usergroup wird in diesem Monat wieder in unseren Räumlichkeiten stattfinden. Für Pizza und Getränke ist gesorgt.',
-    img: '/stafff1.jpg',
+    text: 'The legendary meetup of the PHP Usergroup Hamburg will this month again take place in our location. Two genious speakers as well as Pizza and drinks are waiting for you to join in. The legendary meetup of the PHP Usergroup Hamburg will this month again take place in our location. Two genious speakers as well as Pizza and drinks are waiting for you to join in.',
+    img: '/usergroup.jpg',
     created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
   },
   {
     id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc001',
-    title: 'Hamburg Halbmarathon',
+    title: 'Hamburg Halfmarathon',
     date: 'Thu Apr 26 2023 19:00:00 GMT+0100',
-    text: 'Beim diesjährigen Halbmarathon werden wir wieder mit unserer Laufgruppe teilnehmen. Meldet Euch bald an, damit wir planen können.',
-    img: '/stafff1.jpg',
+    text: 'We will be joining the Hamburg Halfmarathon with our runners team again. Please participate if you feel like it, it is so much fun! We will be joining the Hamburg Halfmarathon with our runners team again. Please participate if you feel like it, it is so much fun!',
+    img: '/halfmarathon.jpg',
     created: 'Fri Jan 27 2023 11:34:08 GMT+0100'
   }
 ];

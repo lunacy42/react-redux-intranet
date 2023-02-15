@@ -1,49 +1,18 @@
-.card {
-  position: relative;
-  aspect-ratio: 1 / 1.5;
-  background-color: #eee;
-}
-
-.card:hover {
-  background-color: #ddd;
-  transition: 0.4s;
-}
-
-.card:active {
-  background-color: #aaa;
-}
-
-.img {
-  width: 100%;
-  height: 45%;
-  object-fit: cover;
-}
-
-.link {
-  position: absolute;
-  inset: 0;
-}
-
-.staffInfo {
-  text-align: center;
-  font-size: 12px;
-  margin: 12px;
-}
+@import '../../../assets/styles/_main.scss';
 
 .staffName {
   text-align: center;
-  font-size: 16px;
+  @include text-big;
 }
 
 .staffJobTitle {
   text-align: center;
-  font-size: 14px;
-  font-style: italic;
+  @include text-italic;
 }
 
 .staffInfoBlock {
   width: 100%;
-  font-size: 12px;
+  @include text-small;
   text-align: left;
 }
 
