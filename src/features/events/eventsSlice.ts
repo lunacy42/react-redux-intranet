@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { getEvents } from '../../common/api/api';
+import { getEvents, mutateEvents } from '../../common/api/api';
 import { Event } from '../../common/types';
 
 export interface EventsState {
@@ -18,6 +18,15 @@ const initialState: EventsState = {
 export const fetchEvents = createAsyncThunk('events/fetchEvents', async () => {
   try {
     const response = await getEvents();
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+
+export const updateEvents = createAsyncThunk('events/updateEvents', async (event: Event) => {
+  try {
+    const response = await mutateEvents(event);
     return response;
   } catch (error) {
     return error;

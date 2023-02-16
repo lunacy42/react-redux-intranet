@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import AnnouncementsList from '../../features/announcements/components/AnnouncementsList';
 import UpcomingEventsList from '../../features/events/components/UpcomingEventsList';
 import NewStaffList from '../../features/users/components/NewStaffList';
 import styles from './Dashboard.module.scss';
@@ -11,6 +12,7 @@ const Dashboard = () => {
         <div className={styles.anouncementsBlock}>
           <div className={styles.blockContent}>
             <h3>Announcements</h3>
+            <AnnouncementsList />
           </div>
         </div>
         <div className={styles.newStaffBlock}>

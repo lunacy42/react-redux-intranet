@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { getAnnouncements } from '../../common/api/api';
+import { getAnnouncements, mutateAnnouncements } from '../../common/api/api';
 import { Announcement } from '../../common/types';
 
 export interface AnnouncementsState {
@@ -23,6 +23,18 @@ export const fetchAnnouncements = createAsyncThunk('announcements/fetchAnnouncem
     return error;
   }
 });
+
+export const updateAnnouncements = createAsyncThunk(
+  'announcements/updateAnnouncements',
+  async (announcement: Announcement) => {
+    try {
+      const response = await mutateAnnouncements(announcement);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
 
 export const announcementsSlice = createSlice({
   name: 'announcements',
@@ -47,12 +59,18 @@ export const announcementsSlice = createSlice({
 
 export const selectAnnouncements = (state: RootState) => state.announcements.announcements;
 export const selectAnnouncementsStatus = (state: RootState) => state.announcements.status;
+export const selectAnnouncementById = (state: RootState, id: string) => {
+  return state.announcements.announcements.find(
+    (announcement: Announcement) => announcement.id === id
+  );
+};
 
 export const selectSortedAnnouncements = createSelector(
   selectAnnouncements,
   (announcements: Announcement[]) => {
     // select all announcements
-    const sortedAnnouncements = announcements?.sort((a, b) => {
+    const newAnnouncements = [...announcements];
+    const sortedAnnouncements = newAnnouncements?.sort((a, b) => {
       if (new Date(b.created) > new Date(a.created)) {
         return 1;
       }

@@ -128,6 +128,7 @@ export const selectCurrentUser = createSelector(
     const { userId } = auth;
 
     const currentUser = users.find((user: User) => user.id === userId) || null;
+
     return currentUser;
   }
 );

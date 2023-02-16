@@ -1,4 +1,4 @@
-import { User } from '../types';
+import { Announcement, User } from '../types';
 
 export const loginUser = async (email: string, password: string) => {
   let responseJsonData;
@@ -90,6 +90,48 @@ export const getEvents = async () => {
       headers: {
         'Content-Type': 'application/json'
       }
+    });
+    responseJsonData = await response.json();
+
+    if (response.ok) {
+      return responseJsonData;
+    }
+    throw new Error(response.statusText);
+  } catch (e: any) {
+    return Promise.reject(e.message ? e.message : responseJsonData);
+  }
+};
+
+export const mutateAnnouncements = async (announcement: Announcement) => {
+  let responseJsonData;
+  try {
+    const response = await fetch('api/update-announcement', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(announcement)
+    });
+    responseJsonData = await response.json();
+
+    if (response.ok) {
+      return responseJsonData;
+    }
+    throw new Error(response.statusText);
+  } catch (e: any) {
+    return Promise.reject(e.message ? e.message : responseJsonData);
+  }
+};
+
+export const mutateEvents = async (event: Event) => {
+  let responseJsonData;
+  try {
+    const response = await fetch('api/update-event', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(event)
     });
     responseJsonData = await response.json();
 

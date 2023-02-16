@@ -161,13 +161,13 @@ export const announcements = [
     created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
   },
   {
-    id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc001',
+    id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc011',
     title: 'New access code in Hamburg',
     text: 'Starting on March 4th 2023 there will be a new access code available for our office in Hamburg. Please use the founding year of the Beatles, 1960, to enter our premises from than on.',
-    created: 'Thu Feb 27 2023 11:34:08 GMT+0100'
+    created: 'Wed Jan 25 2023 11:34:08 GMT+0100'
   },
   {
-    id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc001',
+    id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc021',
     title: 'Corporate event on May 26th will be delayed',
     text: 'Because of the renovation works in our office in Hamburg we are sorry to announce that our corporate event that was planned for May 26th 2023 will not take place on that date. As soon as we find an alternative date we will announce it here!',
     created: 'Sat Jan 28 2023 11:34:08 GMT+0100'
@@ -176,7 +176,7 @@ export const announcements = [
 
 export const events = [
   {
-    id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc001',
+    id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc002',
     title: 'Meetup PHP Usergroup',
     date: 'Thu Feb 26 2023 19:00:00 GMT+0100',
     text: 'The legendary meetup of the PHP Usergroup Hamburg will this month again take place in our location. Two genious speakers as well as Pizza and drinks are waiting for you to join in. The legendary meetup of the PHP Usergroup Hamburg will this month again take place in our location. Two genious speakers as well as Pizza and drinks are waiting for you to join in.',
@@ -184,7 +184,7 @@ export const events = [
     created: 'Thu Jan 26 2023 11:34:08 GMT+0100'
   },
   {
-    id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc001',
+    id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc012',
     title: 'Hamburg Halfmarathon',
     date: 'Thu Apr 26 2023 19:00:00 GMT+0100',
     text: 'We will be joining the Hamburg Halfmarathon with our runners team again. Please participate if you feel like it, it is so much fun! We will be joining the Hamburg Halfmarathon with our runners team again. Please participate if you feel like it, it is so much fun!',

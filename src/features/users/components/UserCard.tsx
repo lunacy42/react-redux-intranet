@@ -23,7 +23,7 @@ const UserCard = ({ user, cardRef }: UserCardProps) => {
     { icon: <RiDoorOpenFill />, info: user.room }
   ];
   return (
-    <Card cardRef={cardRef} image={user.img} alt={user.firstName}>
+    <Card cardRef={cardRef} image={user.img} alt={user.firstName} link={`/staff/${user.username}`}>
       <p className={styles.staffName}>
         {user.firstName} {user.lastName}
       </p>
