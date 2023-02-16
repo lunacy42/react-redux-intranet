@@ -1,4 +1,4 @@
-import { Announcement, User } from '../types';
+import { Announcement, User, CompanyEvent } from '../types';
 
 export const loginUser = async (email: string, password: string) => {
   let responseJsonData;
@@ -123,7 +123,7 @@ export const mutateAnnouncements = async (announcement: Announcement) => {
   }
 };
 
-export const mutateEvents = async (event: Event) => {
+export const mutateEvents = async (event: CompanyEvent) => {
   let responseJsonData;
   try {
     const response = await fetch('api/update-event', {

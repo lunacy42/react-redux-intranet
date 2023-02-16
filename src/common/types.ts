@@ -34,7 +34,7 @@ export interface Announcement {
   created: string;
 }
 
-export interface Event {
+export interface CompanyEvent {
   id: string;
   title: string;
   text: string;

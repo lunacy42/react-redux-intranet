@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { getEvents, mutateEvents } from '../../common/api/api';
-import { Event } from '../../common/types';
+import { CompanyEvent } from '../../common/types';
 
 export interface EventsState {
-  events: Event[];
+  events: CompanyEvent[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 }
@@ -24,7 +24,7 @@ export const fetchEvents = createAsyncThunk('events/fetchEvents', async () => {
   }
 });
 
-export const updateEvents = createAsyncThunk('events/updateEvents', async (event: Event) => {
+export const updateEvents = createAsyncThunk('events/updateEvents', async (event: CompanyEvent) => {
   try {
     const response = await mutateEvents(event);
     return response;
@@ -57,10 +57,10 @@ export const eventsSlice = createSlice({
 export const selectEvents = (state: RootState) => state.events.events;
 export const selectEventsStatus = (state: RootState) => state.events.status;
 
-export const selectUpcomingEvents = createSelector(selectEvents, (events: Event[]) => {
+export const selectUpcomingEvents = createSelector(selectEvents, (events: CompanyEvent[]) => {
   // select only events in the future, and sort them on the date they occur
   const upcomingEvents =
-    events?.filter((event: Event) => {
+    events?.filter((event: CompanyEvent) => {
       const now = new Date();
       const eventDate = new Date(event.date);
       return eventDate > now;

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Event } from '../../../common/types';
+import { CompanyEvent } from '../../../common/types';
 import styles from './EventCard.module.scss';
 import { MdOutlineLocationOn } from 'react-icons/md';
 import { MdMyLocation } from 'react-icons/md';
@@ -10,7 +10,7 @@ import { RiDoorOpenFill } from 'react-icons/ri';
 import Card from '../../../components/card/Card';
 
 interface EventCardProps {
-  event: Event;
+  event: CompanyEvent;
   cardRef: { current: null | HTMLDivElement } | null;
 }
 

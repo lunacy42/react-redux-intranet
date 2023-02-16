@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Event, User } from '../../../common/types';
+import { CompanyEvent, User } from '../../../common/types';
 import { selectUsersStatus, selectNewUsers } from '../../users/usersSlice';
 import styles from './UpcomingEventsList.module.scss';
 import UserCard from '../../users/components/UserCard';
@@ -15,7 +15,7 @@ const UpcomingEventsList = () => {
   return (
     <HorizontalScrollBox cardRef={cardRef}>
       {eventsStatus === 'succeeded' && upcomingEvents?.length === 0 && <p>No Event found.</p>}
-      {upcomingEvents?.map((event: Event) => {
+      {upcomingEvents?.map((event: CompanyEvent) => {
         return <EventCard key={event.id} event={event} cardRef={cardRef} />;
       })}
     </HorizontalScrollBox>

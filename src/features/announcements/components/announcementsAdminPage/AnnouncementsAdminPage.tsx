@@ -60,4 +60,4 @@ const AnnouncementsAdminPage = () => {
   );
 };
 
-export default AnnouncementsEditList;
+export default AnnouncementsAdminPage;
