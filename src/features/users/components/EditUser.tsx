@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { selectUserByUsername, updateUser } from '../usersSlice';
-import { useParams } from 'react-router-dom';
+import { selectUserByUsername, selectUsersUpdateStatus, updateUser } from '../usersSlice';
+import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../../app/store';
 import UserForm, { FormData } from './userForm/UserForm';
 import { useAppDispatch } from '../../../app/hooks';
@@ -8,9 +8,11 @@ import { useAppDispatch } from '../../../app/hooks';
 const EditUser = () => {
   const { username } = useParams();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const user = username
     ? useSelector((state: RootState) => selectUserByUsername(state, username))
     : null;
+  const loading = useSelector(selectUsersUpdateStatus) === 'loading';
 
   if (!user) {
     return (
@@ -51,9 +53,11 @@ const EditUser = () => {
         room: data.room,
         role: data.role
       })
-    );
+    ).then(() => {
+      navigate(-1);
+    });
   };
-  return <UserForm values={values} title="Edit User" onSubmit={onSubmit} />;
+  return <UserForm values={values} title="Edit User" onSubmit={onSubmit} loading={loading} />;
 };
 
 export default EditUser;

@@ -12,6 +12,8 @@ export interface AnnouncementsState {
   announcements: Announcement[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   updateStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  createStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  deleteStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 }
 
@@ -19,6 +21,8 @@ const initialState: AnnouncementsState = {
   announcements: [],
   status: 'idle',
   updateStatus: 'idle',
+  createStatus: 'idle',
+  deleteStatus: 'idle',
   error: null
 };
 
@@ -131,6 +135,12 @@ export const announcementsSlice = createSlice({
 
 export const selectAnnouncements = (state: RootState) => state.announcements.announcements;
 export const selectAnnouncementsStatus = (state: RootState) => state.announcements.status;
+export const selectAnnouncementsUpateStatus = (state: RootState) =>
+  state.announcements.updateStatus;
+export const selectAnnouncementsCreateStatus = (state: RootState) =>
+  state.announcements.createStatus;
+export const selectAnnouncementsDeleteStatus = (state: RootState) =>
+  state.announcements.deleteStatus;
 export const selectAnnouncementById = (state: RootState, id: string) => {
   return state.announcements.announcements.find(
     (announcement: Announcement) => announcement.id === id

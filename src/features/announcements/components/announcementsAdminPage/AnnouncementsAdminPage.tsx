@@ -8,7 +8,10 @@ import {
   TableRow
 } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { selectSortedAnnouncements } from '../../announcementsSlice';
+import {
+  selectAnnouncementsDeleteStatus,
+  selectSortedAnnouncements
+} from '../../announcementsSlice';
 import styles from './AnnouncementsAdminPage.module.scss';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
@@ -16,6 +19,8 @@ import { Link } from 'react-router-dom';
 
 const AnnouncementsAdminPage = () => {
   const announcements = useSelector(selectSortedAnnouncements);
+  const deleteStatus = useSelector(selectAnnouncementsDeleteStatus);
+  const loading = useSelector(selectAnnouncementsDeleteStatus) === 'loading';
   return (
     <div>
       <div className={styles.pageHeader}>

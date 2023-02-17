@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Box, Button, CircularProgress } from '@mui/material';
 import styles from './UserForm.module.scss';
 import FormInputText from '../../../../components/form/FormInputText';
 import { useForm } from 'react-hook-form';
@@ -22,9 +22,10 @@ interface UserFormProps {
   values: FormData;
   title: string;
   onSubmit: (data: FormData) => void;
+  loading: boolean;
 }
 
-const UserForm = ({ values, title, onSubmit }: UserFormProps) => {
+const UserForm = ({ values, title, onSubmit, loading }: UserFormProps) => {
   const methods = useForm<FormData>({ defaultValues: values });
   const { handleSubmit, reset, control } = methods;
   return (
@@ -70,9 +71,24 @@ const UserForm = ({ values, title, onSubmit }: UserFormProps) => {
           <FormInputText name="role" control={control} label="Role" multiline={false} />
         </div>
         <div className={styles.buttonWrapper}>
-          <Button onClick={handleSubmit(onSubmit)} variant={'contained'}>
-            Save
-          </Button>
+          <div className={styles.saveButtonWrapper}>
+            <Button onClick={handleSubmit(onSubmit)} variant={'contained'} disabled={loading}>
+              Save
+            </Button>
+            {loading && (
+              <CircularProgress
+                size={24}
+                sx={{
+                  color: 'blue',
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  marginTop: '-12px',
+                  marginLeft: '-12px'
+                }}
+              />
+            )}
+          </div>
           <Button onClick={() => reset()} variant={'outlined'}>
             Reset
           </Button>

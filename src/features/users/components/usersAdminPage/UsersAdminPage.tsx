@@ -8,14 +8,20 @@ import {
   TableRow
 } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { selectUsers } from '../../usersSlice';
+import { deleteUser, selectUsers, selectUsersDeleteStatus } from '../../usersSlice';
 import styles from './UsersAdminPage.module.scss';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../../../app/hooks';
 
 const UsersAdminPage = () => {
   const users = useSelector(selectUsers);
+  const dispatch = useAppDispatch();
+  const loading = useSelector(selectUsersDeleteStatus) === 'loading';
+  const handleDelete = (userId: string) => {
+    dispatch(deleteUser(userId));
+  };
   return (
     <div>
       <div className={styles.pageHeader}>
@@ -68,7 +74,7 @@ const UsersAdminPage = () => {
                       <Link to={`/users/edit/${user.username}`}>
                         <AiFillEdit />
                       </Link>
-                      <MdOutlineDeleteOutline />
+                      <MdOutlineDeleteOutline onClick={() => handleDelete(user.id)} />
                     </div>
                   </TableCell>
                 </TableRow>

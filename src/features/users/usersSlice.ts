@@ -10,6 +10,8 @@ export interface UsersState {
   currentUserId: string | null;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   updateStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  createStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  deleteStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 }
 
@@ -18,6 +20,8 @@ const initialState: UsersState = {
   currentUserId: null,
   status: 'idle',
   updateStatus: 'idle',
+  createStatus: 'idle',
+  deleteStatus: 'idle',
   error: null
 };
 
@@ -123,6 +127,9 @@ export const usersSlice = createSlice({
 
 export const selectUsers = (state: RootState) => state.users.users;
 export const selectUsersStatus = (state: RootState) => state.users.status;
+export const selectUsersUpdateStatus = (state: RootState) => state.users.updateStatus;
+export const selectUsersCreateStatus = (state: RootState) => state.users.createStatus;
+export const selectUsersDeleteStatus = (state: RootState) => state.users.deleteStatus;
 export const selectUserByUsername = (state: RootState, username: string) =>
   state.users.users.find((user: User) => user.username === username);
 
@@ -168,7 +175,7 @@ export const selectCurrentUser = createSelector(
   (users: User[], auth: AuthState) => {
     const { userId } = auth;
 
-    const currentUser = users?.find((user: User) => user.id === userId) || null;
+    const currentUser = users.length ? users.find((user: User) => user.id === userId) : null;
 
     return currentUser;
   }

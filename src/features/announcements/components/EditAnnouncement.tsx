@@ -1,6 +1,10 @@
 import { useSelector } from 'react-redux';
-import { selectAnnouncementById, updateAnnouncement } from '../announcementsSlice';
-import { useParams } from 'react-router-dom';
+import {
+  selectAnnouncementById,
+  selectAnnouncementsUpateStatus,
+  updateAnnouncement
+} from '../announcementsSlice';
+import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../../app/store';
 import AnnouncementForm from './announcementForm/AnnouncementForm';
 import { useAppDispatch } from '../../../app/hooks';
@@ -13,11 +17,12 @@ type FormData = {
 const EditAnnouncement = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const loading = useSelector(selectAnnouncementsUpateStatus) === 'loading';
   const announcement = id
     ? useSelector((state: RootState) => selectAnnouncementById(state, id))
     : null;
 
-  console.log('announcement', announcement);
   if (!announcement) {
     return (
       <section>
@@ -31,9 +36,20 @@ const EditAnnouncement = () => {
     text: announcement.text
   };
   const onSubmit = (data: FormData) => {
-    dispatch(updateAnnouncement({ ...announcement, title: data.title, text: data.text }));
+    dispatch(updateAnnouncement({ ...announcement, title: data.title, text: data.text })).then(
+      () => {
+        navigate(-1);
+      }
+    );
   };
-  return <AnnouncementForm values={values} title="Edit Announcement" onSubmit={onSubmit} />;
+  return (
+    <AnnouncementForm
+      values={values}
+      title="Edit Announcement"
+      onSubmit={onSubmit}
+      loading={loading}
+    />
+  );
 };
 
 export default EditAnnouncement;

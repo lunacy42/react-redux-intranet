@@ -7,6 +7,8 @@ export interface EventsState {
   events: CompanyEvent[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   updateStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  createStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  deleteStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 }
 
@@ -14,6 +16,8 @@ const initialState: EventsState = {
   events: [],
   status: 'idle',
   updateStatus: 'idle',
+  createStatus: 'idle',
+  deleteStatus: 'idle',
   error: null
 };
 
@@ -115,6 +119,9 @@ export const eventsSlice = createSlice({
 
 export const selectEvents = (state: RootState) => state.events.events;
 export const selectEventsStatus = (state: RootState) => state.events.status;
+export const selectEventsUpdateStatus = (state: RootState) => state.events.updateStatus;
+export const selectEventsCreateStatus = (state: RootState) => state.events.createStatus;
+export const selectEventsDeleteStatus = (state: RootState) => state.events.deleteStatus;
 export const selectEventById = (state: RootState, id: string) => {
   return state.events.events.find((event: CompanyEvent) => event.id === id);
 };

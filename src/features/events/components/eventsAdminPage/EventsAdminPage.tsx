@@ -8,7 +8,7 @@ import {
   TableRow
 } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { selectUpcomingEvents } from '../../eventsSlice';
+import { selectEventsDeleteStatus, selectUpcomingEvents } from '../../eventsSlice';
 import styles from './EventsAdminPage.module.scss';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 
 const EventsAdminPage = () => {
   const events = useSelector(selectUpcomingEvents);
+  const loading = useSelector(selectEventsDeleteStatus) === 'loading';
   return (
     <div>
       <div className={styles.pageHeader}>

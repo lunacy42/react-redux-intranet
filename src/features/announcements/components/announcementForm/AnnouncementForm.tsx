@@ -1,5 +1,6 @@
 import {
   Button,
+  CircularProgress,
   Paper,
   Table,
   TableBody,
@@ -30,9 +31,10 @@ interface AnnouncementFormProps {
   values: FormData;
   title: string;
   onSubmit: (data: FormData) => void;
+  loading?: boolean;
 }
 
-const AnnouncementForm = ({ values, title, onSubmit }: AnnouncementFormProps) => {
+const AnnouncementForm = ({ values, title, onSubmit, loading = false }: AnnouncementFormProps) => {
   const methods = useForm<FormData>({ defaultValues: values });
   const { handleSubmit, reset, control } = methods;
   // const onSubmit = (data: FormData) => console.log(data);
@@ -49,9 +51,24 @@ const AnnouncementForm = ({ values, title, onSubmit }: AnnouncementFormProps) =>
           <FormInputText name="text" control={control} label="Text" multiline={true} numRows={8} />
         </div>
         <div className={styles.buttonWrapper}>
-          <Button onClick={handleSubmit(onSubmit)} variant={'contained'}>
-            Save
-          </Button>
+          <div className={styles.saveButtonWrapper}>
+            <Button onClick={handleSubmit(onSubmit)} variant={'contained'} disabled={loading}>
+              Save
+            </Button>
+            {loading && (
+              <CircularProgress
+                size={24}
+                sx={{
+                  color: 'blue',
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  marginTop: '-12px',
+                  marginLeft: '-12px'
+                }}
+              />
+            )}
+          </div>
           <Button onClick={() => reset()} variant={'outlined'}>
             Reset
           </Button>

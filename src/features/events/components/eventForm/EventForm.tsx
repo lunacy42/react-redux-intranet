@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import styles from './EventForm.module.scss';
 import FormInputText from '../../../../components/form/FormInputText';
 import { useForm } from 'react-hook-form';
@@ -9,16 +9,17 @@ export type FormData = {
   title: string;
   text: string;
   date: string;
-  image: string;
+  img: string;
 };
 
 interface EventFormProps {
   values: FormData;
   title: string;
   onSubmit: (data: FormData) => void;
+  loading: boolean;
 }
 
-const EventForm = ({ values, title, onSubmit }: EventFormProps) => {
+const EventForm = ({ values, title, onSubmit, loading }: EventFormProps) => {
   const methods = useForm<FormData>({ defaultValues: values });
   const { handleSubmit, reset, control } = methods;
   // const onSubmit = (data: FormData) => console.log(data);
@@ -41,9 +42,24 @@ const EventForm = ({ values, title, onSubmit }: EventFormProps) => {
           <input accept="image/*" type="file" />
         </div>
         <div className={styles.buttonWrapper}>
-          <Button onClick={handleSubmit(onSubmit)} variant={'contained'}>
-            Save
-          </Button>
+          <div className={styles.saveButtonWrapper}>
+            <Button onClick={handleSubmit(onSubmit)} variant={'contained'} disabled={loading}>
+              Save
+            </Button>
+            {loading && (
+              <CircularProgress
+                size={24}
+                sx={{
+                  color: 'blue',
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  marginTop: '-12px',
+                  marginLeft: '-12px'
+                }}
+              />
+            )}
+          </div>
           <Button onClick={() => reset()} variant={'outlined'}>
             Reset
           </Button>

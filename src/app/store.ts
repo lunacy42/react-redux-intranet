@@ -5,6 +5,7 @@ import usersReducer from '../features/users/usersSlice';
 import filtersReducer from '../features/filters/filtersSlice';
 import announcementsReducer from '../features/announcements/announcementsSlice';
 import eventsReducer from '../features/events/eventsSlice';
+import alertsReducer from '../features/alerts/alertsSlice';
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   users: usersReducer,
   filters: filtersReducer,
   announcements: announcementsReducer,
-  events: eventsReducer
+  events: eventsReducer,
+  alerts: alertsReducer
 });
 
 export const setupStore = () => {

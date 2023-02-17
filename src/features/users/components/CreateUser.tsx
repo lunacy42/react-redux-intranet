@@ -1,9 +1,13 @@
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../app/hooks';
-import { createUser } from '../usersSlice';
+import { createUser, selectUsersCreateStatus } from '../usersSlice';
 import UserForm, { FormData } from './userForm/UserForm';
 
 const CreateUser = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const loading = useSelector(selectUsersCreateStatus) === 'loading';
   const values = {
     username: '',
     email: '',
@@ -39,9 +43,11 @@ const CreateUser = () => {
         noticeDate: '',
         created: new Date().toString()
       })
-    );
+    ).then(() => {
+      navigate(-1);
+    });
   };
-  return <UserForm values={values} title="Create User" onSubmit={onSubmit} />;
+  return <UserForm values={values} title="Create User" onSubmit={onSubmit} loading={loading} />;
 };
 
 export default CreateUser;
