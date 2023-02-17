@@ -1,17 +1,24 @@
 import { createAsyncThunk, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { getAnnouncements, mutateAnnouncements } from '../../common/api/api';
+import {
+  createNewAnnouncement,
+  getAnnouncements,
+  mutateAnnouncement,
+  removeAnnouncement
+} from '../../common/api/api';
 import { Announcement } from '../../common/types';
 
 export interface AnnouncementsState {
   announcements: Announcement[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  updateStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 }
 
 const initialState: AnnouncementsState = {
   announcements: [],
   status: 'idle',
+  updateStatus: 'idle',
   error: null
 };
 
@@ -24,11 +31,35 @@ export const fetchAnnouncements = createAsyncThunk('announcements/fetchAnnouncem
   }
 });
 
-export const updateAnnouncements = createAsyncThunk(
-  'announcements/updateAnnouncements',
+export const updateAnnouncement = createAsyncThunk(
+  'announcements/updateAnnouncement',
   async (announcement: Announcement) => {
     try {
-      const response = await mutateAnnouncements(announcement);
+      const response = await mutateAnnouncement(announcement);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
+export const createAnnouncement = createAsyncThunk(
+  'announcements/createAnnouncement',
+  async (announcement: Announcement) => {
+    try {
+      const response = await createNewAnnouncement(announcement);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
+export const deleteAnnouncement = createAsyncThunk(
+  'announcements/deleteAnnouncement',
+  async (announcementId: string) => {
+    try {
+      const response = await removeAnnouncement(announcementId);
       return response;
     } catch (error) {
       return error;
@@ -52,6 +83,47 @@ export const announcementsSlice = createSlice({
       .addCase(fetchAnnouncements.rejected, (state, action) => {
         state.status = 'failed';
         state.announcements = [];
+        state.error = action.error.message;
+      })
+      .addCase(updateAnnouncement.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(updateAnnouncement.fulfilled, (state, action: PayloadAction<any>) => {
+        state.status = 'succeeded';
+        const announcements = state.announcements;
+        const newAnnouncements = announcements.map((announcement: Announcement) =>
+          announcement.id === action.payload.id ? action.payload : announcement
+        );
+        state.announcements = newAnnouncements;
+      })
+      .addCase(updateAnnouncement.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(createAnnouncement.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(createAnnouncement.fulfilled, (state, action: PayloadAction<any>) => {
+        state.status = 'succeeded';
+        state.announcements = [...state.announcements, action.payload];
+      })
+      .addCase(createAnnouncement.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(deleteAnnouncement.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(deleteAnnouncement.fulfilled, (state, action: PayloadAction<any>) => {
+        state.status = 'succeeded';
+        const announcements = state.announcements;
+        const newAnnouncements = announcements.filter(
+          (announcement: Announcement) => announcement.id !== action.payload
+        );
+        state.announcements = newAnnouncements;
+      })
+      .addCase(deleteAnnouncement.rejected, (state, action) => {
+        state.status = 'failed';
         state.error = action.error.message;
       });
   }

@@ -1,0 +1,12 @@
+.pageHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.iconRow {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  font-size: 18px;
+}

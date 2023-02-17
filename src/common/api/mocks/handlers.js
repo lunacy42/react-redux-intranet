@@ -47,6 +47,64 @@ export const handlers = [
     const user = await req.json();
     return res(ctx.status(200), ctx.json(user));
   }),
+  rest.post('/api/create-user', async (req, res, ctx) => {
+    // Check if the user is authenticated in this session
+    const isAuthenticated = sessionStorage.getItem('is-authenticated');
+    if (!isAuthenticated) {
+      // If not authenticated, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'Not authorized'
+        })
+      );
+    }
+
+    // Check if the user has admin rights
+    const isAdmin = sessionStorage.getItem('is-admin');
+    if (!isAdmin) {
+      // If not admin, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'No admin rights'
+        })
+      );
+    }
+
+    // If authenticated, return mocked users
+    const user = await req.json();
+    return res(ctx.status(200), ctx.json(user));
+  }),
+  rest.post('/api/delete-user', async (req, res, ctx) => {
+    // Check if the user is authenticated in this session
+    const isAuthenticated = sessionStorage.getItem('is-authenticated');
+    if (!isAuthenticated) {
+      // If not authenticated, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'Not authorized'
+        })
+      );
+    }
+
+    // Check if the user has admin rights
+    const isAdmin = sessionStorage.getItem('is-admin');
+    if (!isAdmin) {
+      // If not admin, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'No admin rights'
+        })
+      );
+    }
+
+    // If authenticated, return mocked users
+    const userId = await req.json();
+    return res(ctx.status(200), ctx.json(userId));
+  }),
   rest.get('/api/announcements', (req, res, ctx) => {
     // Check if the user is authenticated in this session
     const isAuthenticated = sessionStorage.getItem('is-authenticated');
@@ -92,6 +150,64 @@ export const handlers = [
     const announcement = await req.json();
     return res(ctx.status(200), ctx.json(announcement));
   }),
+  rest.post('/api/create-announcement', async (req, res, ctx) => {
+    // Check if the user is authenticated in this session
+    const isAuthenticated = sessionStorage.getItem('is-authenticated');
+    if (!isAuthenticated) {
+      // If not authenticated, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'Not authorized'
+        })
+      );
+    }
+
+    // Check if the user has admin rights
+    const isAdmin = sessionStorage.getItem('is-admin');
+    if (!isAdmin) {
+      // If not admin, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'No admin rights'
+        })
+      );
+    }
+
+    // If authenticated, return mocked users
+    const announcement = await req.json();
+    return res(ctx.status(200), ctx.json(announcement));
+  }),
+  rest.post('/api/delete-announcement', async (req, res, ctx) => {
+    // Check if the user is authenticated in this session
+    const isAuthenticated = sessionStorage.getItem('is-authenticated');
+    if (!isAuthenticated) {
+      // If not authenticated, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'Not authorized'
+        })
+      );
+    }
+
+    // Check if the user has admin rights
+    const isAdmin = sessionStorage.getItem('is-admin');
+    if (!isAdmin) {
+      // If not admin, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'No admin rights'
+        })
+      );
+    }
+
+    // If authenticated, return mocked users
+    const announcementId = await req.json();
+    return res(ctx.status(200), ctx.json(announcementId));
+  }),
   rest.get('/api/events', (req, res, ctx) => {
     // Check if the user is authenticated in this session
     const isAuthenticated = sessionStorage.getItem('is-authenticated');
@@ -136,5 +252,63 @@ export const handlers = [
     // If authenticated and admin rights are provided, return mocked event
     const event = await req.json();
     return res(ctx.status(200), ctx.json(event));
+  }),
+  rest.post('/api/create-event', async (req, res, ctx) => {
+    // Check if the user is authenticated in this session
+    const isAuthenticated = sessionStorage.getItem('is-authenticated');
+    if (!isAuthenticated) {
+      // If not authenticated, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'Not authorized'
+        })
+      );
+    }
+
+    // Check if the user has admin rights
+    const isAdmin = sessionStorage.getItem('is-admin');
+    if (!isAdmin) {
+      // If not admin, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'No admin rights'
+        })
+      );
+    }
+
+    // If authenticated and admin rights are provided, return mocked event
+    const event = await req.json();
+    return res(ctx.status(200), ctx.json(event));
+  }),
+  rest.post('/api/delete-event', async (req, res, ctx) => {
+    // Check if the user is authenticated in this session
+    const isAuthenticated = sessionStorage.getItem('is-authenticated');
+    if (!isAuthenticated) {
+      // If not authenticated, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'Not authorized'
+        })
+      );
+    }
+
+    // Check if the user has admin rights
+    const isAdmin = sessionStorage.getItem('is-admin');
+    if (!isAdmin) {
+      // If not admin, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'No admin rights'
+        })
+      );
+    }
+
+    // If authenticated and admin rights are provided, return mocked event
+    const eventId = await req.json();
+    return res(ctx.status(200), ctx.json(eventId));
   })
 ];

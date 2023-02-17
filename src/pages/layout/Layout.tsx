@@ -21,10 +21,11 @@ const Layout = () => {
       {currentUser?.role === 'admin' && (
         <>
           <div className={styles.adminNavWrapper}>
+            <h2>Administration</h2>
             <div className={styles.adminNav}>
-              <Link to={`/edit-announcements`}>Edit Announcements</Link>
-              <Link to={`/edit-users`}>Edit Users</Link>
-              <Link to={`/edit-events`}>Edit Events</Link>
+              <Link to={`/administrate-announcements`}>Announcements</Link>
+              <Link to={`/administrate-users`}>Users</Link>
+              <Link to={`/administrate-events`}>Events</Link>
             </div>
           </div>
           <hr />

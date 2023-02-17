@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
-import { selectAnnouncementById } from '../announcementsSlice';
+import { selectAnnouncementById, updateAnnouncement } from '../announcementsSlice';
 import { useParams } from 'react-router-dom';
 import { RootState } from '../../../app/store';
 import AnnouncementForm from './announcementForm/AnnouncementForm';
+import { useAppDispatch } from '../../../app/hooks';
 
 type FormData = {
   title: string;
@@ -11,6 +12,7 @@ type FormData = {
 
 const EditAnnouncement = () => {
   const { id } = useParams();
+  const dispatch = useAppDispatch();
   const announcement = id
     ? useSelector((state: RootState) => selectAnnouncementById(state, id))
     : null;
@@ -28,7 +30,9 @@ const EditAnnouncement = () => {
     title: announcement.title,
     text: announcement.text
   };
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = (data: FormData) => {
+    dispatch(updateAnnouncement({ ...announcement, title: data.title, text: data.text }));
+  };
   return <AnnouncementForm values={values} title="Edit Announcement" onSubmit={onSubmit} />;
 };
 

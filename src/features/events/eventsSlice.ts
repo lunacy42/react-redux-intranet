@@ -1,17 +1,19 @@
 import { createAsyncThunk, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { getEvents, mutateEvents } from '../../common/api/api';
+import { createNewEvent, getEvents, mutateEvent, removeEvent } from '../../common/api/api';
 import { CompanyEvent } from '../../common/types';
 
 export interface EventsState {
   events: CompanyEvent[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  updateStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 }
 
 const initialState: EventsState = {
   events: [],
   status: 'idle',
+  updateStatus: 'idle',
   error: null
 };
 
@@ -24,9 +26,27 @@ export const fetchEvents = createAsyncThunk('events/fetchEvents', async () => {
   }
 });
 
-export const updateEvents = createAsyncThunk('events/updateEvents', async (event: CompanyEvent) => {
+export const updateEvent = createAsyncThunk('events/updateEvent', async (event: CompanyEvent) => {
   try {
-    const response = await mutateEvents(event);
+    const response = await mutateEvent(event);
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+
+export const createEvent = createAsyncThunk('events/createEvent', async (event: CompanyEvent) => {
+  try {
+    const response = await createNewEvent(event);
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+
+export const deleteEvent = createAsyncThunk('events/deleteEvent', async (eventId: string) => {
+  try {
+    const response = await removeEvent(eventId);
     return response;
   } catch (error) {
     return error;
@@ -50,12 +70,54 @@ export const eventsSlice = createSlice({
         state.status = 'failed';
         state.events = [];
         state.error = action.error.message;
+      })
+      .addCase(updateEvent.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(updateEvent.fulfilled, (state, action: PayloadAction<any>) => {
+        state.status = 'succeeded';
+        const events = state.events;
+        const newEvents = events.map((event: CompanyEvent) =>
+          event.id === action.payload.id ? action.payload : event
+        );
+        state.events = newEvents;
+      })
+      .addCase(updateEvent.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(createEvent.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(createEvent.fulfilled, (state, action: PayloadAction<any>) => {
+        state.status = 'succeeded';
+        state.events = [...state.events, action.payload];
+      })
+      .addCase(createEvent.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(deleteEvent.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(deleteEvent.fulfilled, (state, action: PayloadAction<any>) => {
+        state.status = 'succeeded';
+        const events = state.events;
+        const newEvents = events.filter((event: CompanyEvent) => event.id !== action.payload);
+        state.events = newEvents;
+      })
+      .addCase(deleteEvent.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       });
   }
 });
 
 export const selectEvents = (state: RootState) => state.events.events;
 export const selectEventsStatus = (state: RootState) => state.events.status;
+export const selectEventById = (state: RootState, id: string) => {
+  return state.events.events.find((event: CompanyEvent) => event.id === id);
+};
 
 export const selectUpcomingEvents = createSelector(selectEvents, (events: CompanyEvent[]) => {
   // select only events in the future, and sort them on the date they occur

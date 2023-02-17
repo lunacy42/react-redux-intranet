@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { getUsers, mutateUser } from '../../common/api/api';
+import { createNewUser, getUsers, mutateUser, removeUser } from '../../common/api/api';
 import { User } from '../../common/types';
 import { AuthState } from '../auth/authSlice';
 import { FiltersState } from '../filters/filtersSlice';
@@ -33,6 +33,24 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
 export const updateUser = createAsyncThunk('users/updateUser', async (user: User) => {
   try {
     const response = await mutateUser(user);
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+
+export const createUser = createAsyncThunk('users/createUser', async (user: User) => {
+  try {
+    const response = await createNewUser(user);
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+
+export const deleteUser = createAsyncThunk('users/deleteUser', async (userId: string) => {
+  try {
+    const response = await removeUser(userId);
     return response;
   } catch (error) {
     return error;
@@ -74,7 +92,30 @@ export const usersSlice = createSlice({
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.updateStatus = 'failed';
-        state.users = [];
+        state.error = action.error.message;
+      })
+      .addCase(createUser.pending, (state, action) => {
+        state.updateStatus = 'loading';
+      })
+      .addCase(createUser.fulfilled, (state, action: PayloadAction<any>) => {
+        state.updateStatus = 'succeeded';
+        state.users = [...state.users, action.payload];
+      })
+      .addCase(createUser.rejected, (state, action) => {
+        state.updateStatus = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(deleteUser.pending, (state, action) => {
+        state.updateStatus = 'loading';
+      })
+      .addCase(deleteUser.fulfilled, (state, action: PayloadAction<any>) => {
+        state.updateStatus = 'succeeded';
+        const users = state.users;
+        const newUsers = users.filter((user: User) => user.id !== action.payload);
+        state.users = newUsers;
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
+        state.updateStatus = 'failed';
         state.error = action.error.message;
       });
   }
@@ -127,7 +168,7 @@ export const selectCurrentUser = createSelector(
   (users: User[], auth: AuthState) => {
     const { userId } = auth;
 
-    const currentUser = users.find((user: User) => user.id === userId) || null;
+    const currentUser = users?.find((user: User) => user.id === userId) || null;
 
     return currentUser;
   }

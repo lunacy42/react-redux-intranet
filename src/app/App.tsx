@@ -20,10 +20,16 @@ import {
   selectAnnouncementsStatus
 } from '../features/announcements/announcementsSlice';
 import { fetchEvents, selectEventsStatus } from '../features/events/eventsSlice';
-import AnnouncementsEditList from '../features/announcements/components/announcementsAdminPage/AnnouncementsAdminPage';
+import AnnouncementsAdminPage from '../features/announcements/components/announcementsAdminPage/AnnouncementsAdminPage';
 import AdminRoute from '../common/routes/AdminRoute';
 import EditAnnouncement from '../features/announcements/components/EditAnnouncement';
 import CreateAnnouncement from '../features/announcements/components/CreateAnnouncement';
+import EventsAdminPage from '../features/events/components/eventsAdminPage/EventsAdminPage';
+import EditEvent from '../features/events/components/EditEvent';
+import CreateEvent from '../features/events/components/CreateEvent';
+import UsersAdminPage from '../features/users/components/usersAdminPage/UsersAdminPage';
+import EditUser from '../features/users/components/EditUser';
+import CreateUser from '../features/users/components/CreateUser';
 
 function App() {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
@@ -57,9 +63,15 @@ function App() {
           <Route path="/staff/:username" element={<SingleStaff />} />
         </Route>
         <Route element={<AdminRoute isAdmin={user?.role === 'admin'} />}>
-          <Route path="/edit-announcements" element={<AnnouncementsEditList />} />
+          <Route path="/administrate-announcements" element={<AnnouncementsAdminPage />} />
           <Route path="/announcements/edit/:id" element={<EditAnnouncement />} />
           <Route path="/announcements/create" element={<CreateAnnouncement />} />
+          <Route path="/administrate-events" element={<EventsAdminPage />} />
+          <Route path="/events/edit/:id" element={<EditEvent />} />
+          <Route path="/events/create" element={<CreateEvent />} />
+          <Route path="/administrate-users" element={<UsersAdminPage />} />
+          <Route path="/users/edit/:username" element={<EditUser />} />
+          <Route path="/users/create" element={<CreateUser />} />
           <Route path="/edit-users" element={<User />} />
           <Route path="/edit-events" element={<Staff />} />
           <Route path="/staff/:username" element={<SingleStaff />} />

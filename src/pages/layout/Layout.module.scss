@@ -18,12 +18,21 @@
 }
 
 .adminNavWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-left: $margin-regular;
   margin-right: $margin-regular;
 }
 
+.adminNavWrapper h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .adminNav {
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

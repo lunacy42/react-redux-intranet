@@ -6,6 +6,8 @@ import App from './app/App';
 import reportWebVitals from './reportWebVitals';
 import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
+import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 
 if (process.env.NODE_ENV === 'development') {
   // eslint-disable-next-line
@@ -20,11 +22,13 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <LocalizationProvider dateAdapter={AdapterLuxon}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </LocalizationProvider>
   </React.StrictMode>
 );
 

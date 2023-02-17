@@ -8,20 +8,20 @@ import {
   TableRow
 } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { selectSortedAnnouncements } from '../../announcementsSlice';
-import styles from './AnnouncementsAdminPage.module.scss';
+import { selectUpcomingEvents } from '../../eventsSlice';
+import styles from './EventsAdminPage.module.scss';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
-const AnnouncementsAdminPage = () => {
-  const announcements = useSelector(selectSortedAnnouncements);
+const EventsAdminPage = () => {
+  const events = useSelector(selectUpcomingEvents);
   return (
     <div>
       <div className={styles.pageHeader}>
-        <h2>Administrate Announcements</h2>
-        <Link className={styles.link} to="/announcements/create">
-          <h3>New Announcement</h3>
+        <h2>Administrate Events</h2>
+        <Link className={styles.link} to="/events/create">
+          <h3>New Event</h3>
         </Link>
       </div>
       <div>
@@ -31,23 +31,25 @@ const AnnouncementsAdminPage = () => {
               <TableRow>
                 <TableCell>Title</TableCell>
                 <TableCell align="left">Text</TableCell>
+                <TableCell align="left">Date</TableCell>
+                <TableCell align="left">Image</TableCell>
                 <TableCell align="left">Created at</TableCell>
                 <TableCell align="left"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {announcements.map((announcement) => (
-                <TableRow
-                  key={announcement.id}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              {events.map((event) => (
+                <TableRow key={event.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell component="th" scope="row">
-                    {announcement.title}
+                    {event.title}
                   </TableCell>
-                  <TableCell align="left">{announcement.text}</TableCell>
-                  <TableCell align="left">{announcement.created}</TableCell>
+                  <TableCell align="left">{event.text}</TableCell>
+                  <TableCell align="left">{event.date}</TableCell>
+                  <TableCell align="left">{event.img}</TableCell>
+                  <TableCell align="left">{event.created}</TableCell>
                   <TableCell align="left">
                     <div className={styles.iconRow}>
-                      <Link to={`/announcements/edit/${announcement.id}`}>
+                      <Link to={`/events/edit/${event.id}`}>
                         <AiFillEdit />
                       </Link>
                       <MdOutlineDeleteOutline />
@@ -63,4 +65,4 @@ const AnnouncementsAdminPage = () => {
   );
 };
 
-export default AnnouncementsAdminPage;
+export default EventsAdminPage;
