@@ -32,7 +32,6 @@ export const getUsers = async () => {
       }
     });
     responseJsonData = await response.json();
-
     if (response.ok) {
       return responseJsonData;
     }

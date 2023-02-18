@@ -5,12 +5,7 @@ import {
   createAnnouncement,
   selectAnnouncementsCreateStatus
 } from '../../../features/announcements/announcementsSlice';
-import AnnouncementForm from './announcementForm/AnnouncementForm';
-
-type FormData = {
-  title: string;
-  text: string;
-};
+import AnnouncementForm, { FormData } from './announcementForm/AnnouncementForm';
 
 const CreateAnnouncement = () => {
   const navigate = useNavigate();

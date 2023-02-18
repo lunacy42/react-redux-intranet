@@ -6,13 +6,8 @@ import {
 } from '../../../features/announcements/announcementsSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../../app/store';
-import AnnouncementForm from './announcementForm/AnnouncementForm';
+import AnnouncementForm, { FormData } from './announcementForm/AnnouncementForm';
 import { useAppDispatch } from '../../../app/hooks';
-
-type FormData = {
-  title: string;
-  text: string;
-};
 
 const EditAnnouncement = () => {
   const { id } = useParams();

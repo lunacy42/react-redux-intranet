@@ -37,7 +37,7 @@ function App() {
   const eventsStatus = useSelector(selectEventsStatus);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(login({ email: '', password: '' }));
+    // dispatch(login({ email: '', password: '' }));
     if (usersStatus === 'idle') {
       dispatch(fetchUsers());
     }

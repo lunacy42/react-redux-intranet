@@ -21,41 +21,50 @@ const initialState: EventsState = {
   error: null
 };
 
-export const fetchEvents = createAsyncThunk('events/fetchEvents', async () => {
+export const fetchEvents = createAsyncThunk('events/fetchEvents', async (_, thunkAPI) => {
   try {
     const response = await getEvents();
     return response;
   } catch (error) {
-    return error;
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
-export const updateEvent = createAsyncThunk('events/updateEvent', async (event: CompanyEvent) => {
-  try {
-    const response = await mutateEvent(event);
-    return response;
-  } catch (error) {
-    return error;
+export const updateEvent = createAsyncThunk(
+  'events/updateEvent',
+  async (event: CompanyEvent, thunkAPI) => {
+    try {
+      const response = await mutateEvent(event);
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
-export const createEvent = createAsyncThunk('events/createEvent', async (event: CompanyEvent) => {
-  try {
-    const response = await createNewEvent(event);
-    return response;
-  } catch (error) {
-    return error;
+export const createEvent = createAsyncThunk(
+  'events/createEvent',
+  async (event: CompanyEvent, thunkAPI) => {
+    try {
+      const response = await createNewEvent(event);
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
-export const deleteEvent = createAsyncThunk('events/deleteEvent', async (eventId: string) => {
-  try {
-    const response = await removeEvent(eventId);
-    return response;
-  } catch (error) {
-    return error;
+export const deleteEvent = createAsyncThunk(
+  'events/deleteEvent',
+  async (eventId: string, thunkAPI) => {
+    try {
+      const response = await removeEvent(eventId);
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 export const eventsSlice = createSlice({
   name: 'events',

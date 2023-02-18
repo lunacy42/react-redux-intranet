@@ -25,39 +25,39 @@ const initialState: UsersState = {
   error: null
 };
 
-export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
+export const fetchUsers = createAsyncThunk('users/fetchUsers', async (_, thunkAPI) => {
   try {
     const response = await getUsers();
     return response;
   } catch (error) {
-    return error;
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
-export const updateUser = createAsyncThunk('users/updateUser', async (user: User) => {
+export const updateUser = createAsyncThunk('users/updateUser', async (user: User, thunkAPI) => {
   try {
     const response = await mutateUser(user);
     return response;
   } catch (error) {
-    return error;
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
-export const createUser = createAsyncThunk('users/createUser', async (user: User) => {
+export const createUser = createAsyncThunk('users/createUser', async (user: User, thunkAPI) => {
   try {
     const response = await createNewUser(user);
     return response;
   } catch (error) {
-    return error;
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
-export const deleteUser = createAsyncThunk('users/deleteUser', async (userId: string) => {
+export const deleteUser = createAsyncThunk('users/deleteUser', async (userId: string, thunkAPI) => {
   try {
     const response = await removeUser(userId);
     return response;
   } catch (error) {
-    return error;
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
@@ -174,7 +174,6 @@ export const selectCurrentUser = createSelector(
   (state: RootState) => state.auth,
   (users: User[], auth: AuthState) => {
     const { userId } = auth;
-
     const currentUser = users.length > 0 ? users.find((user: User) => user.id === userId) : null;
 
     return currentUser;

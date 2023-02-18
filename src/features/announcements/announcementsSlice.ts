@@ -26,47 +26,50 @@ const initialState: AnnouncementsState = {
   error: null
 };
 
-export const fetchAnnouncements = createAsyncThunk('announcements/fetchAnnouncements', async () => {
-  try {
-    const response = await getAnnouncements();
-    return response;
-  } catch (error) {
-    return error;
+export const fetchAnnouncements = createAsyncThunk(
+  'announcements/fetchAnnouncements',
+  async (_, thunkAPI) => {
+    try {
+      const response = await getAnnouncements();
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 export const updateAnnouncement = createAsyncThunk(
   'announcements/updateAnnouncement',
-  async (announcement: Announcement) => {
+  async (announcement: Announcement, thunkAPI) => {
     try {
       const response = await mutateAnnouncement(announcement);
       return response;
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
 export const createAnnouncement = createAsyncThunk(
   'announcements/createAnnouncement',
-  async (announcement: Announcement) => {
+  async (announcement: Announcement, thunkAPI) => {
     try {
       const response = await createNewAnnouncement(announcement);
       return response;
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
 export const deleteAnnouncement = createAsyncThunk(
   'announcements/deleteAnnouncement',
-  async (announcementId: string) => {
+  async (announcementId: string, thunkAPI) => {
     try {
       const response = await removeAnnouncement(announcementId);
       return response;
     } catch (error) {
-      return error;
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
