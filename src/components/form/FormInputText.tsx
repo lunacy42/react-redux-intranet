@@ -11,6 +11,8 @@ export interface FormInputProps {
   multiline: boolean;
   numRows?: number;
   required?: boolean;
+  dataTestid?: string;
+  type?: string;
 }
 
 const FormInputText = ({
@@ -19,7 +21,9 @@ const FormInputText = ({
   label,
   multiline,
   numRows = 1,
-  required = false
+  required = false,
+  dataTestid = '',
+  type = 'text'
 }: FormInputProps) => {
   return (
     <div className={styles.inputWrapper}>
@@ -27,13 +31,21 @@ const FormInputText = ({
         name={name}
         control={control}
         rules={{
-          required: required
+          required: required,
+          pattern:
+            type === 'email'
+              ? // eslint-disable-next-line no-useless-escape
+                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+              : /^/
         }}
         render={({ field: { onChange, value }, fieldState: { error }, formState }) => {
           const getHelperText = () => {
             if (error) {
               if (error.type === 'required') {
                 return 'This field is required';
+              }
+              if (error.type === 'pattern') {
+                return 'Valid email required';
               }
               return error.message;
             }
@@ -51,6 +63,8 @@ const FormInputText = ({
               variant="outlined"
               multiline={multiline}
               rows={numRows}
+              data-testid={dataTestid}
+              type={type}
             />
           );
         }}

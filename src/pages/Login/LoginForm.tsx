@@ -40,6 +40,8 @@ const LoginForm = () => {
         label="Email"
         multiline={false}
         required={true}
+        dataTestid="input-email"
+        type="email"
       />
       <FormInputText
         name="password"
@@ -47,6 +49,8 @@ const LoginForm = () => {
         label="Password"
         multiline={false}
         required={true}
+        dataTestid="input-password"
+        type="password"
       />
       <FormButtons
         handleSubmit={handleSubmit}

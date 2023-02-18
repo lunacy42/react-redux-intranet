@@ -21,7 +21,11 @@ const FormButtons = ({
   return (
     <div className={styles.buttonWrapper}>
       <div className={styles.saveButtonWrapper}>
-        <Button onClick={handleSubmit(onSubmit)} variant={'contained'} disabled={loading}>
+        <Button
+          onClick={handleSubmit(onSubmit)}
+          variant={'contained'}
+          disabled={loading}
+          data-testid="submit">
           {submitButtonTitle}
         </Button>
         {loading && (
