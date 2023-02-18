@@ -28,7 +28,7 @@ export const handlers = [
     }
 
     // If authenticated, return mocked users
-    return res(ctx.status(200), ctx.json(users));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(users));
   }),
   rest.post('/api/update-user', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -45,7 +45,7 @@ export const handlers = [
 
     // If authenticated, return mocked users
     const user = await req.json();
-    return res(ctx.status(200), ctx.json(user));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(user));
   }),
   rest.post('/api/create-user', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -74,7 +74,7 @@ export const handlers = [
 
     // If authenticated, return mocked users
     const user = await req.json();
-    return res(ctx.status(200), ctx.json(user));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(user));
   }),
   rest.post('/api/delete-user', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -103,7 +103,7 @@ export const handlers = [
 
     // If authenticated, return mocked users
     const userId = await req.json();
-    return res(ctx.status(200), ctx.json(userId));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(userId));
   }),
   rest.get('/api/announcements', (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -119,7 +119,7 @@ export const handlers = [
     }
 
     // If authenticated, return mocked users
-    return res(ctx.status(200), ctx.json(announcements));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(announcements));
   }),
   rest.post('/api/update-announcement', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -148,7 +148,7 @@ export const handlers = [
 
     // If authenticated, return mocked users
     const announcement = await req.json();
-    return res(ctx.status(200), ctx.json(announcement));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(announcement));
   }),
   rest.post('/api/create-announcement', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -177,7 +177,7 @@ export const handlers = [
 
     // If authenticated, return mocked users
     const announcement = await req.json();
-    return res(ctx.status(200), ctx.json(announcement));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(announcement));
   }),
   rest.post('/api/delete-announcement', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -206,7 +206,7 @@ export const handlers = [
 
     // If authenticated, return mocked users
     const announcementId = await req.json();
-    return res(ctx.status(200), ctx.json(announcementId));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(announcementId));
   }),
   rest.get('/api/events', (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -222,7 +222,7 @@ export const handlers = [
     }
 
     // If authenticated, return mocked events
-    return res(ctx.status(200), ctx.json(events));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(events));
   }),
   rest.post('/api/update-event', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -251,7 +251,7 @@ export const handlers = [
 
     // If authenticated and admin rights are provided, return mocked event
     const event = await req.json();
-    return res(ctx.status(200), ctx.json(event));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(event));
   }),
   rest.post('/api/create-event', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -280,7 +280,7 @@ export const handlers = [
 
     // If authenticated and admin rights are provided, return mocked event
     const event = await req.json();
-    return res(ctx.status(200), ctx.json(event));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(event));
   }),
   rest.post('/api/delete-event', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -309,6 +309,6 @@ export const handlers = [
 
     // If authenticated and admin rights are provided, return mocked event
     const eventId = await req.json();
-    return res(ctx.status(200), ctx.json(eventId));
+    return res(ctx.delay(800), ctx.status(200), ctx.json(eventId));
   })
 ];

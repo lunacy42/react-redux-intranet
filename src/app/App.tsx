@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import { Counter } from '../features/counter/Counter';
-import './App.scss';
+import styles from './App.module.scss';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../pages/layout/Layout';
 import Dashboard from '../pages/dashboard/Dashboard';
@@ -49,7 +47,6 @@ function App() {
     if (eventsStatus === 'idle') {
       dispatch(fetchEvents());
     }
-    console.log('user, isAuthenticated', user, isAuthenticated, user?.role === 'admin');
   }, [usersStatus]);
 
   return (
