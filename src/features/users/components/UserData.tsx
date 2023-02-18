@@ -21,9 +21,10 @@ import { RootState } from '../../../app/store';
 
 interface UserDataProps {
   username: string;
+  myPage?: boolean;
 }
 
-const UserData = ({ username }: UserDataProps) => {
+const UserData = ({ username, myPage = false }: UserDataProps) => {
   const user = useSelector((state: RootState) => selectUserByUsername(state, username));
 
   if (!user) {
@@ -51,13 +52,18 @@ const UserData = ({ username }: UserDataProps) => {
           {user.firstName} {user.lastName}
         </h2>
         <p className={styles.jobTitle}>{user.jobTitle}</p>
-        <strong>Availability: </strong>
-        <p>{user.availability}</p>
-        <strong>Notice: </strong>
-        <p>{user.notice}</p>
+        {!myPage && (
+          <>
+            <strong>Availability: </strong>
+            <p>{user.availability}</p>
+            <strong>Notice: </strong>
+            <p>{user.notice}</p>
+          </>
+        )}
       </div>
       <div>
         <div className={styles.userInfo}>
+          {/* on myPage there will be a form for these fields, so don't show them there */}
           {staffInfos.map((staffInfo) => (
             <div key="staffInfo.info" className={styles.userInfoField}>
               <div className={styles.icon}>{staffInfo.icon}</div>
