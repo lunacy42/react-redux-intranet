@@ -1,0 +1,27 @@
+@import '../../assets/styles/_main.scss';
+
+.announcementBox {
+  background-color: #eee;
+  padding: 12px;
+  margin-bottom: 12px;
+
+  .title {
+    text-align: center;
+    @include text-big;
+  }
+
+  .date {
+    text-align: center;
+    @include text-italic;
+  }
+
+  .text {
+    width: 100%;
+    text-overflow: unset;
+    white-space: unset;
+    overflow: unset;
+    line-break: normal;
+    @include text-small;
+    text-align: center;
+  }
+}

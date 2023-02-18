@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
+import { RootState } from '../../app/store';
 import { loginUser } from '../../common/api/api';
-import { LoginUser, User } from '../../common/types';
+import { LoginUser } from '../../common/types';
 
 export interface AuthState {
   userId: string | null;

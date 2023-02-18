@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import styles from './App.module.scss';
 import { Route, Routes } from 'react-router-dom';
-import Layout from '../pages/layout/Layout';
-import Dashboard from '../pages/dashboard/Dashboard';
-import Staff from '../pages/staff/Staff';
-import NoMatch from '../pages/noMatch/NoMatch';
+import Layout from '../pages/Layout';
+import Dashboard from '../pages/Dashboard';
+import Staff from '../pages/Staff';
+import NoMatch from '../pages/NoMatch';
 import ProtectedRoute from '../common/routes/ProtectedRoute';
-import Login from '../pages/login/Login';
+import Login from '../pages/Login';
 import { useAppDispatch, useAppSelector } from './hooks';
 import { login } from '../features/auth/authSlice';
-import User from '../pages/user/User';
-import SingleStaff from '../pages/singleStaff/SingleStaff';
+import User from '../pages/MyPage';
+import SingleStaff from '../pages/SingleStaff';
 import { fetchUsers, selectCurrentUser, selectUsersStatus } from '../features/users/usersSlice';
 import { useSelector } from 'react-redux';
 import {
@@ -18,16 +18,16 @@ import {
   selectAnnouncementsStatus
 } from '../features/announcements/announcementsSlice';
 import { fetchEvents, selectEventsStatus } from '../features/events/eventsSlice';
-import AnnouncementsAdminPage from '../features/announcements/components/announcementsAdminPage/AnnouncementsAdminPage';
+import AnnouncementsAdminPage from '../pages/adminPages/announcements/AnnouncementsAdminPage';
 import AdminRoute from '../common/routes/AdminRoute';
-import EditAnnouncement from '../features/announcements/components/EditAnnouncement';
-import CreateAnnouncement from '../features/announcements/components/CreateAnnouncement';
-import EventsAdminPage from '../features/events/components/eventsAdminPage/EventsAdminPage';
-import EditEvent from '../features/events/components/EditEvent';
-import CreateEvent from '../features/events/components/CreateEvent';
-import UsersAdminPage from '../features/users/components/usersAdminPage/UsersAdminPage';
-import EditUser from '../features/users/components/EditUser';
-import CreateUser from '../features/users/components/CreateUser';
+import EditAnnouncement from '../pages/adminPages/announcements/EditAnnouncement';
+import CreateAnnouncement from '../pages/adminPages/announcements/CreateAnnouncement';
+import EventsAdminPage from '../pages/adminPages/events/eventsAdminPage';
+import EditEvent from '../pages/adminPages/events/EditEvent';
+import CreateEvent from '../pages/adminPages/events/CreateEvent';
+import UsersAdminPage from '../pages/adminPages/users/usersAdminPage';
+import EditUser from '../pages/adminPages/users/EditUser';
+import CreateUser from '../pages/adminPages/users/CreateUser';
 
 function App() {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);

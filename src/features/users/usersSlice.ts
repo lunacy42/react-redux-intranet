@@ -175,7 +175,7 @@ export const selectCurrentUser = createSelector(
   (users: User[], auth: AuthState) => {
     const { userId } = auth;
 
-    const currentUser = users.length ? users.find((user: User) => user.id === userId) : null;
+    const currentUser = users.length > 0 ? users.find((user: User) => user.id === userId) : null;
 
     return currentUser;
   }

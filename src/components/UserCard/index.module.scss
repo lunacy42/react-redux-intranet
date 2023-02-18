@@ -1,0 +1,34 @@
+@import '../../assets/styles/_main.scss';
+
+.staffName {
+  text-align: center;
+  @include text-big;
+}
+
+.staffJobTitle {
+  text-align: center;
+  @include text-italic;
+}
+
+.staffInfoBlock {
+  width: 100%;
+  @include text-small;
+  text-align: left;
+}
+
+.staffInfoField {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+}
+
+.staffInfoField p {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.icon {
+  margin-right: 24px;
+  font-size: 16px;
+}
