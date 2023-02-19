@@ -9,11 +9,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 
-if (process.env.NODE_ENV === 'development') {
-  // eslint-disable-next-line
-  const { worker } = require('./common/api/mocks/browser');
-  worker.start();
-}
+// eslint-disable-next-line
+const { worker } = require('./common/api/mocks/browser');
+worker.start();
 
 const store = setupStore();
 

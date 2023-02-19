@@ -1,17 +1,29 @@
 import { rest } from 'msw';
 import { announcements, events, users } from './DATA';
 export const handlers = [
-  rest.post('/api/login', (req, res, ctx) => {
+  rest.post('/api/login', async (req, res, ctx) => {
+    const loginValues = await req.json();
     // Persist user's authentication and role in the session
     sessionStorage.setItem('is-authenticated', 'true');
-    sessionStorage.setItem('is-admin', 'true');
+
+    let user;
+    if (loginValues.email === 'admin@test.de') {
+      sessionStorage.setItem('is-admin', 'true');
+      user = {
+        id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
+        role: 'admin'
+      };
+    } else {
+      user = {
+        id: '81bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
+        role: 'user'
+      };
+    }
+    console.log('user', user);
     return res(
       // Respond with a 200 status code
       ctx.status(200),
-      ctx.json({
-        id: '11bf5b37-e1b8-42e0-8dcf-dc8c4aefc000',
-        role: 'admin'
-      })
+      ctx.json(user)
     );
   }),
   rest.get('/api/users', (req, res, ctx) => {

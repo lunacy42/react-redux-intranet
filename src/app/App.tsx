@@ -38,16 +38,19 @@ function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     // dispatch(login({ email: '', password: '' }));
-    if (usersStatus === 'idle') {
-      dispatch(fetchUsers());
+    if (isAuthenticated) {
+      if (usersStatus === 'idle') {
+        dispatch(fetchUsers());
+      }
+      if (announcementsStatus === 'idle') {
+        dispatch(fetchAnnouncements());
+      }
+      if (eventsStatus === 'idle') {
+        dispatch(fetchEvents());
+      }
     }
-    if (announcementsStatus === 'idle') {
-      dispatch(fetchAnnouncements());
-    }
-    if (eventsStatus === 'idle') {
-      dispatch(fetchEvents());
-    }
-  }, [usersStatus]);
+  }, [usersStatus, isAuthenticated]);
+  console.log('user', user, eventsStatus);
 
   return (
     <Routes>

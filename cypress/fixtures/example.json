@@ -1,5 +1,40 @@
-{
-  "name": "Using fixtures to represent data",
-  "email": "hello@cypress.io",
-  "body": "Fixtures are a great way to mock data for responses to routes"
-}
+[
+  {
+    "id": "11bf5b37-e1b8-42e0-8dcf-dc8c4aefc000",
+    "username": "admin",
+    "email": "admin@pear.de",
+    "firstName": "Philipp",
+    "lastName": "Kropp",
+    "department": "IT",
+    "team": "sys-admin",
+    "jobTitle": "System Administrator",
+    "img": "/staffm1.jpg",
+    "telephone": "+49 179 22 33 445",
+    "location": "Hamburg",
+    "room": "12b",
+    "availability": "Monday until Friday 8am - 5pm",
+    "notice": "I will not be available this Thursday afternoon.",
+    "noticeDate": "Thu Jan 26 2023 11:34:08 GMT+0100",
+    "role": "admin",
+    "created": "Thu Jan 26 2023 11:34:08 GMT+0100"
+  },
+  {
+    "id": "21bf5b37-e1b8-42e0-8dcf-dc8c4aefc000",
+    "username": "karla",
+    "email": "karla.egon@pear.de",
+    "firstName": "Karla",
+    "lastName": "Egon",
+    "department": "IT",
+    "team": "development",
+    "jobTitle": "Frontend Developerin React",
+    "img": "/stafff4.jpg",
+    "telephone": "+49 179 22 33 445",
+    "location": "Hamburg",
+    "room": "12b",
+    "availability": "Monday until Friday 8am - 5pm",
+    "notice": "I will not be available this Thursday afternoon.",
+    "noticeDate": "Thu Jan 26 2023 11:34:08 GMT+0100",
+    "role": "user",
+    "created": "Thu Jan 26 2023 11:34:08 GMT+0100"
+  }
+]
