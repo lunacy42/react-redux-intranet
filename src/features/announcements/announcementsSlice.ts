@@ -93,10 +93,10 @@ export const announcementsSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(updateAnnouncement.pending, (state, action) => {
-        state.status = 'loading';
+        state.updateStatus = 'loading';
       })
       .addCase(updateAnnouncement.fulfilled, (state, action: PayloadAction<any>) => {
-        state.status = 'succeeded';
+        state.updateStatus = 'succeeded';
         const announcements = state.announcements;
         const newAnnouncements = announcements.map((announcement: Announcement) =>
           announcement.id === action.payload.id ? action.payload : announcement
@@ -104,25 +104,25 @@ export const announcementsSlice = createSlice({
         state.announcements = newAnnouncements;
       })
       .addCase(updateAnnouncement.rejected, (state, action) => {
-        state.status = 'failed';
+        state.updateStatus = 'failed';
         state.error = action.error.message;
       })
       .addCase(createAnnouncement.pending, (state, action) => {
-        state.status = 'loading';
+        state.createStatus = 'loading';
       })
       .addCase(createAnnouncement.fulfilled, (state, action: PayloadAction<any>) => {
-        state.status = 'succeeded';
+        state.createStatus = 'succeeded';
         state.announcements = [...state.announcements, action.payload];
       })
       .addCase(createAnnouncement.rejected, (state, action) => {
-        state.status = 'failed';
+        state.createStatus = 'failed';
         state.error = action.error.message;
       })
       .addCase(deleteAnnouncement.pending, (state, action) => {
-        state.status = 'loading';
+        state.deleteStatus = 'loading';
       })
       .addCase(deleteAnnouncement.fulfilled, (state, action: PayloadAction<any>) => {
-        state.status = 'succeeded';
+        state.deleteStatus = 'succeeded';
         const announcements = state.announcements;
         const newAnnouncements = announcements.filter(
           (announcement: Announcement) => announcement.id !== action.payload
@@ -130,7 +130,7 @@ export const announcementsSlice = createSlice({
         state.announcements = newAnnouncements;
       })
       .addCase(deleteAnnouncement.rejected, (state, action) => {
-        state.status = 'failed';
+        state.deleteStatus = 'failed';
         state.error = action.error.message;
       });
   }

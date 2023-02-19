@@ -99,27 +99,27 @@ export const usersSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(createUser.pending, (state, action) => {
-        state.updateStatus = 'loading';
+        state.createStatus = 'loading';
       })
       .addCase(createUser.fulfilled, (state, action: PayloadAction<any>) => {
-        state.updateStatus = 'succeeded';
+        state.createStatus = 'succeeded';
         state.users = [...state.users, action.payload];
       })
       .addCase(createUser.rejected, (state, action) => {
-        state.updateStatus = 'failed';
+        state.createStatus = 'failed';
         state.error = action.error.message;
       })
       .addCase(deleteUser.pending, (state, action) => {
-        state.updateStatus = 'loading';
+        state.deleteStatus = 'loading';
       })
       .addCase(deleteUser.fulfilled, (state, action: PayloadAction<any>) => {
-        state.updateStatus = 'succeeded';
+        state.deleteStatus = 'succeeded';
         const users = state.users;
         const newUsers = users.filter((user: User) => user.id !== action.payload);
         state.users = newUsers;
       })
       .addCase(deleteUser.rejected, (state, action) => {
-        state.updateStatus = 'failed';
+        state.deleteStatus = 'failed';
         state.error = action.error.message;
       });
   }

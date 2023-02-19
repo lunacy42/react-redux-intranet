@@ -1,4 +1,5 @@
 import {
+  CircularProgress,
   Paper,
   Table,
   TableBody,
@@ -9,6 +10,7 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import {
+  deleteAnnouncement,
   selectAnnouncementsDeleteStatus,
   selectSortedAnnouncements
 } from '../../../../features/announcements/announcementsSlice';
@@ -16,11 +18,19 @@ import styles from './index.module.scss';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../../../app/hooks';
+import { useState } from 'react';
 
 const AnnouncementsAdminPage = () => {
+  const [eventIdOfLoadingButton, setEventIdOfLoadingButton] = useState<string | null>(null);
   const announcements = useSelector(selectSortedAnnouncements);
   const deleteStatus = useSelector(selectAnnouncementsDeleteStatus);
+  const dispatch = useAppDispatch();
   const loading = useSelector(selectAnnouncementsDeleteStatus) === 'loading';
+  const handleDelete = (announcementId: string) => {
+    setEventIdOfLoadingButton(announcementId);
+    dispatch(deleteAnnouncement(announcementId));
+  };
   return (
     <div>
       <div className={styles.pageHeader}>
@@ -52,10 +62,27 @@ const AnnouncementsAdminPage = () => {
                   <TableCell align="left">{announcement.created}</TableCell>
                   <TableCell align="left">
                     <div className={styles.iconRow}>
-                      <Link to={`/announcements/edit/${announcement.id}`}>
+                      <Link
+                        to={`/announcements/edit/${announcement.id}`}
+                        data-testid={`edit-${announcement.id}`}>
                         <AiFillEdit />
                       </Link>
-                      <MdOutlineDeleteOutline />
+                      <a
+                        onClick={() => handleDelete(announcement.id)}
+                        className={styles.deleteButton}
+                        data-testid={`delete-${announcement.id}`}>
+                        <MdOutlineDeleteOutline />
+                        {loading && eventIdOfLoadingButton === announcement.id && (
+                          <CircularProgress
+                            size={20}
+                            sx={{
+                              color: 'blue',
+                              position: 'absolute',
+                              marginLeft: '-19px'
+                            }}
+                          />
+                        )}
+                      </a>
                     </div>
                   </TableCell>
                 </TableRow>

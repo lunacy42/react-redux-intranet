@@ -9,6 +9,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 
+declare global {
+  interface Window {
+    Cypress: any;
+    store: any;
+  }
+}
 // eslint-disable-next-line
 const { worker } = require('./common/api/mocks/browser');
 worker.start();
@@ -29,6 +35,10 @@ root.render(
     </LocalizationProvider>
   </React.StrictMode>
 );
+console.log('window', window);
+if (window.Cypress) {
+  window.store = store;
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

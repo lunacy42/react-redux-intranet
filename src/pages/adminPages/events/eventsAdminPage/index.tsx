@@ -1,4 +1,5 @@
 import {
+  CircularProgress,
   Paper,
   Table,
   TableBody,
@@ -9,6 +10,7 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import {
+  deleteEvent,
   selectEventsDeleteStatus,
   selectUpcomingEvents
 } from '../../../../features/events/eventsSlice';
@@ -16,10 +18,18 @@ import styles from './index.module.scss';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../../../app/hooks';
+import { useState } from 'react';
 
 const EventsAdminPage = () => {
+  const [eventIdOfLoadingButton, setEventIdOfLoadingButton] = useState<string | null>(null);
   const events = useSelector(selectUpcomingEvents);
+  const dispatch = useAppDispatch();
   const loading = useSelector(selectEventsDeleteStatus) === 'loading';
+  const handleDelete = (eventId: string) => {
+    setEventIdOfLoadingButton(eventId);
+    dispatch(deleteEvent(eventId));
+  };
   return (
     <div>
       <div className={styles.pageHeader}>
@@ -53,10 +63,25 @@ const EventsAdminPage = () => {
                   <TableCell align="left">{event.created}</TableCell>
                   <TableCell align="left">
                     <div className={styles.iconRow}>
-                      <Link to={`/events/edit/${event.id}`}>
+                      <Link to={`/events/edit/${event.id}`} data-testid={`edit-${event.id}`}>
                         <AiFillEdit />
                       </Link>
-                      <MdOutlineDeleteOutline />
+                      <a
+                        onClick={() => handleDelete(event.id)}
+                        className={styles.deleteButton}
+                        data-testid={`delete-${event.id}`}>
+                        <MdOutlineDeleteOutline />
+                        {loading && eventIdOfLoadingButton === event.id && (
+                          <CircularProgress
+                            size={20}
+                            sx={{
+                              color: 'blue',
+                              position: 'absolute',
+                              marginLeft: '-19px'
+                            }}
+                          />
+                        )}
+                      </a>
                     </div>
                   </TableCell>
                 </TableRow>

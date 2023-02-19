@@ -3,6 +3,7 @@ import styles from './EventForm.module.scss';
 import FormInputText from '../../../../components/form/FormInputText';
 import { useForm } from 'react-hook-form';
 import FormInputDateTime from '../../../../components/form/FormInputDateTime';
+import FormButtons from '../../../../components/form/FormButtons';
 
 export type FormData = {
   title: string;
@@ -27,41 +28,32 @@ const EventForm = ({ values, title, onSubmit, loading }: EventFormProps) => {
         <h2>{title}</h2>
       </div>
       <div className={styles.formWrapper}>
-        <div className={styles.inputWrapper}>
-          <FormInputText name="title" control={control} label="Title" multiline={false} />
-        </div>
-        <div className={styles.inputWrapper}>
-          <FormInputText name="text" control={control} label="Text" multiline={true} numRows={8} />
-        </div>
-        <div className={styles.inputWrapper}>
-          <FormInputDateTime name="date" control={control} label="Date" />
-        </div>
-        <div className={styles.inputWrapper}>
-          <input accept="image/*" type="file" />
-        </div>
-        <div className={styles.buttonWrapper}>
-          <div className={styles.saveButtonWrapper}>
-            <Button onClick={handleSubmit(onSubmit)} variant={'contained'} disabled={loading}>
-              Save
-            </Button>
-            {loading && (
-              <CircularProgress
-                size={24}
-                sx={{
-                  color: 'blue',
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  marginTop: '-12px',
-                  marginLeft: '-12px'
-                }}
-              />
-            )}
-          </div>
-          <Button onClick={() => reset()} variant={'outlined'}>
-            Reset
-          </Button>
-        </div>
+        <FormInputText
+          name="title"
+          control={control}
+          label="Title"
+          multiline={false}
+          dataTestid="event-title"
+          required={true}
+        />
+        <FormInputText
+          name="text"
+          control={control}
+          label="Text"
+          multiline={true}
+          numRows={8}
+          dataTestid="event-text"
+          required={true}
+        />
+        <FormInputDateTime name="date" control={control} label="Date" dataTestid="event-date" />
+        <input accept="image/*" type="file" />
+        <FormButtons
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+          loading={loading}
+          reset={reset}
+          submitButtonTitle="Save"
+        />
       </div>
     </div>
   );

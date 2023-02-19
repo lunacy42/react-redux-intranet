@@ -1,4 +1,5 @@
 import {
+  CircularProgress,
   Paper,
   Table,
   TableBody,
@@ -18,12 +19,15 @@ import { AiFillEdit } from 'react-icons/ai';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../../app/hooks';
+import { useState } from 'react';
 
 const UsersAdminPage = () => {
+  const [eventIdOfLoadingButton, setEventIdOfLoadingButton] = useState<string | null>(null);
   const users = useSelector(selectUsers);
   const dispatch = useAppDispatch();
   const loading = useSelector(selectUsersDeleteStatus) === 'loading';
   const handleDelete = (userId: string) => {
+    setEventIdOfLoadingButton(userId);
     dispatch(deleteUser(userId));
   };
   return (
@@ -75,10 +79,25 @@ const UsersAdminPage = () => {
                   <TableCell align="left">{user.created}</TableCell>
                   <TableCell align="left">
                     <div className={styles.iconRow}>
-                      <Link to={`/users/edit/${user.username}`}>
+                      <Link to={`/users/edit/${user.username}`} data-testid={`edit-${user.id}`}>
                         <AiFillEdit />
                       </Link>
-                      <MdOutlineDeleteOutline onClick={() => handleDelete(user.id)} />
+                      <a
+                        onClick={() => handleDelete(user.id)}
+                        className={styles.deleteButton}
+                        data-testid={`delete-${user.id}`}>
+                        <MdOutlineDeleteOutline />
+                        {loading && eventIdOfLoadingButton === user.id && (
+                          <CircularProgress
+                            size={20}
+                            sx={{
+                              color: 'blue',
+                              position: 'absolute',
+                              marginLeft: '-19px'
+                            }}
+                          />
+                        )}
+                      </a>
                     </div>
                   </TableCell>
                 </TableRow>

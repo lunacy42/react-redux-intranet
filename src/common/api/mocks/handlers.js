@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 import { announcements, events, users } from './DATA';
+import { v4 as uuidv4 } from 'uuid';
 export const handlers = [
   rest.post('/api/login', async (req, res, ctx) => {
     const loginValues = await req.json();
@@ -57,7 +58,8 @@ export const handlers = [
 
     // If authenticated, return mocked users
     const user = await req.json();
-    return res(ctx.delay(800), ctx.status(200), ctx.json(user));
+    const userWithImage = { ...user, img: '/stafff4.jpg' };
+    return res(ctx.delay(800), ctx.status(200), ctx.json(userWithImage));
   }),
   rest.post('/api/create-user', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -86,7 +88,8 @@ export const handlers = [
 
     // If authenticated, return mocked users
     const user = await req.json();
-    return res(ctx.delay(800), ctx.status(200), ctx.json(user));
+    const userWithIdAndImage = { ...user, id: uuidv4(), img: '/stafff4.jpg' };
+    return res(ctx.delay(800), ctx.status(200), ctx.json(userWithIdAndImage));
   }),
   rest.post('/api/delete-user', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -189,7 +192,8 @@ export const handlers = [
 
     // If authenticated, return mocked users
     const announcement = await req.json();
-    return res(ctx.delay(800), ctx.status(200), ctx.json(announcement));
+    const announcementWithId = { ...announcement, id: uuidv4() };
+    return res(ctx.delay(800), ctx.status(200), ctx.json(announcementWithId));
   }),
   rest.post('/api/delete-announcement', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -263,7 +267,8 @@ export const handlers = [
 
     // If authenticated and admin rights are provided, return mocked event
     const event = await req.json();
-    return res(ctx.delay(800), ctx.status(200), ctx.json(event));
+    const eventWithImage = { ...event, img: '/halfmarathon.jpg' };
+    return res(ctx.delay(800), ctx.status(200), ctx.json(eventWithImage));
   }),
   rest.post('/api/create-event', async (req, res, ctx) => {
     // Check if the user is authenticated in this session
@@ -292,7 +297,8 @@ export const handlers = [
 
     // If authenticated and admin rights are provided, return mocked event
     const event = await req.json();
-    return res(ctx.delay(800), ctx.status(200), ctx.json(event));
+    const eventWithIdAndImage = { ...event, id: uuidv4(), img: '/halfmarathon.jpg' };
+    return res(ctx.delay(800), ctx.status(200), ctx.json(eventWithIdAndImage));
   }),
   rest.post('/api/delete-event', async (req, res, ctx) => {
     // Check if the user is authenticated in this session

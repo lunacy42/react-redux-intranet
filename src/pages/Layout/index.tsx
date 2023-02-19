@@ -40,6 +40,7 @@ const Layout = () => {
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
           <Alert
             onClose={handleClose}
+            data-testid="alert"
             severity={alert.type === 'success' ? 'success' : 'error'}
             sx={{ width: '100%' }}>
             {alert.message}

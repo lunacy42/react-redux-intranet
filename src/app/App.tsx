@@ -37,7 +37,7 @@ function App() {
   const eventsStatus = useSelector(selectEventsStatus);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    // dispatch(login({ email: '', password: '' }));
+    dispatch(login({ email: 'admin@test.de', password: '1' }));
     if (isAuthenticated) {
       if (usersStatus === 'idle') {
         dispatch(fetchUsers());

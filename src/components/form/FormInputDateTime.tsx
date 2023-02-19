@@ -8,11 +8,12 @@ export interface FormInputProps {
   name: string;
   control: any;
   label: string;
+  dataTestid?: string;
 }
 
-const FormInputDateTime = ({ name, control, label }: FormInputProps) => {
+const FormInputDateTime = ({ name, control, label, dataTestid = '' }: FormInputProps) => {
   return (
-    <div className={styles.inputWrapper}>
+    <div className={styles.inputWrapper} data-testid={dataTestid}>
       <Controller
         name={name}
         control={control}

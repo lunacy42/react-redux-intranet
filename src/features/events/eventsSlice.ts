@@ -85,10 +85,10 @@ export const eventsSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(updateEvent.pending, (state, action) => {
-        state.status = 'loading';
+        state.updateStatus = 'loading';
       })
       .addCase(updateEvent.fulfilled, (state, action: PayloadAction<any>) => {
-        state.status = 'succeeded';
+        state.updateStatus = 'succeeded';
         const events = state.events;
         const newEvents = events.map((event: CompanyEvent) =>
           event.id === action.payload.id ? action.payload : event
@@ -96,31 +96,31 @@ export const eventsSlice = createSlice({
         state.events = newEvents;
       })
       .addCase(updateEvent.rejected, (state, action) => {
-        state.status = 'failed';
+        state.updateStatus = 'failed';
         state.error = action.error.message;
       })
       .addCase(createEvent.pending, (state, action) => {
-        state.status = 'loading';
+        state.createStatus = 'loading';
       })
       .addCase(createEvent.fulfilled, (state, action: PayloadAction<any>) => {
-        state.status = 'succeeded';
+        state.createStatus = 'succeeded';
         state.events = [...state.events, action.payload];
       })
       .addCase(createEvent.rejected, (state, action) => {
-        state.status = 'failed';
+        state.createStatus = 'failed';
         state.error = action.error.message;
       })
       .addCase(deleteEvent.pending, (state, action) => {
-        state.status = 'loading';
+        state.deleteStatus = 'loading';
       })
       .addCase(deleteEvent.fulfilled, (state, action: PayloadAction<any>) => {
-        state.status = 'succeeded';
+        state.deleteStatus = 'succeeded';
         const events = state.events;
         const newEvents = events.filter((event: CompanyEvent) => event.id !== action.payload);
         state.events = newEvents;
       })
       .addCase(deleteEvent.rejected, (state, action) => {
-        state.status = 'failed';
+        state.deleteStatus = 'failed';
         state.error = action.error.message;
       });
   }

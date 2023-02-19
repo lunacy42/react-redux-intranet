@@ -25,8 +25,23 @@ const AnnouncementForm = ({ values, title, onSubmit, loading = false }: Announce
         <h2>{title}</h2>
       </div>
       <div className={styles.formWrapper}>
-        <FormInputText name="title" control={control} label="Title" multiline={false} />
-        <FormInputText name="text" control={control} label="Text" multiline={true} numRows={8} />
+        <FormInputText
+          name="title"
+          control={control}
+          label="Title"
+          multiline={false}
+          dataTestid="announcement-title"
+          required={true}
+        />
+        <FormInputText
+          name="text"
+          control={control}
+          label="Text"
+          multiline={true}
+          numRows={8}
+          dataTestid="announcement-text"
+          required={true}
+        />
         <FormButtons
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
