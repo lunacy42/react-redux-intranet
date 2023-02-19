@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 
 interface HorizontalScrollBoxProps {
   children: ReactNode;
@@ -11,6 +11,10 @@ const HorizontalScrollBox = ({ children, cardRef }: HorizontalScrollBoxProps) =>
   const scrollContainerRef = useRef<null | HTMLDivElement>(null);
   const buttonLeftRef = useRef<null | HTMLDivElement>(null);
   const buttonRightRef = useRef<null | HTMLDivElement>(null);
+
+  useEffect(() => {
+    setButtonVisability();
+  }, []);
 
   const setButtonVisability = () => {
     setTimeout(() => {
