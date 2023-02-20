@@ -39,3 +39,5 @@ Styling improvements.
 ### `npm install`
 
 ### `npm start`
+
+### `npx cypress open`
